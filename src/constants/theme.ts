@@ -1,6 +1,7 @@
 import COLORS from './style/colors';
 import FONTS from './style/fonts';
 import GAPS from './style/gaps';
+import SIZES from './style/sizes';
 
 const BASE_THEME = {
   colors: {
@@ -12,6 +13,11 @@ const BASE_THEME = {
   gaps: {
     ...GAPS,
   },
+  sizes: {
+    ...SIZES,
+  },
+
+  full: '100%',
 };
 
 const THEME = {

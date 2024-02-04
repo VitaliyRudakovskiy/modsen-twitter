@@ -6,9 +6,9 @@ const FONTS: IFonts = {
     robotoSerif: 'Roboto Serif',
   },
   fontSize: {
-    '4xl': 84,
-    '3xl': 42,
-    '2xl': 30,
+    xl4: 84,
+    xl3: 42,
+    xl2: 30,
     xl: 20,
     l: 18,
     m: 16,

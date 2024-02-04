@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectTheme, toggleTheme } from 'store/slices/themeSlice';
+import { selectTheme, toggleTheme } from '@store/slices/themeSlice';
 
 import { Input, Label, Slider, ToggleContainer } from './styled';
 
@@ -12,10 +12,9 @@ const ThemeToggler = () => {
   };
 
   return (
-    <ToggleContainer data-cy='theme-toggler'>
+    <ToggleContainer>
       <Label>
         <Input
-          data-testid='theme-toggler'
           type='checkbox'
           checked={theme === 'light'}
           onChange={handleToggleTheme}
