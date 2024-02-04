@@ -26,6 +26,10 @@ module.exports = {
   ],
   rules: {
     'react/react-in-jsx-scope': 0,
+    'react/function-component-definition': [
+      2,
+      { namedComponents: 'arrow-function' },
+    ],
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },
@@ -44,5 +48,6 @@ module.exports = {
     ],
     'simple-import-sort/exports': 'error',
     'prettier/prettier': ['error', { endOfLine: 'auto' }],
+    'no-param-reassign': 'off',
   },
 };

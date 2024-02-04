@@ -1,7 +1,15 @@
-import './App.css';
+import ThemeProvider from '@providers/ThemeProvider';
+import ThemeToggler from '@UI/ThemeToggler';
 
-function App() {
-  return <h1>Hello worlds</h1>;
-}
+import Ads from './UI/ads';
+
+const App = () => {
+  return (
+    <ThemeProvider>
+      <Ads />
+      <ThemeToggler />
+    </ThemeProvider>
+  );
+};
 
 export default App;
