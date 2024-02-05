@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
-import GlobalStyle from '@constants/style/global';
-import { darkTheme, lightTheme } from '@constants/theme';
 import { selectTheme } from '@store/slices/themeSlice';
+import GlobalStyle from '@theme/style/global';
+import { darkTheme, lightTheme } from '@theme/theme';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 
 import { IThemeProviderProps } from './types';

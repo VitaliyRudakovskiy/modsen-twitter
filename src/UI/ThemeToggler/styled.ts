@@ -1,4 +1,4 @@
-import { flexCenter } from '@constants/style/mixins';
+import { flexCenter } from '@theme/style/mixins';
 import styled from 'styled-components';
 
 export const ToggleContainer = styled.div`

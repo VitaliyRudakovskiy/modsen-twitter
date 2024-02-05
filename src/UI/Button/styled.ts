@@ -1,5 +1,5 @@
 import ButtonVariants from '@constants/buttonVariants';
-import { flexCenter } from '@constants/style/mixins';
+import { flexCenter } from '@theme/style/mixins';
 import styled from 'styled-components';
 
 import { defineBackgroundColor, defineColor } from './helpers';
