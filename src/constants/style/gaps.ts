@@ -13,6 +13,7 @@ const GAPS: IString = {
   xl4: '40px',
   xl5: '45px',
   xl6: '50px',
+  xl7: '55px',
 };
 
 export default GAPS;

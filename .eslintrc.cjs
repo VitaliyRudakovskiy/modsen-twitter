@@ -49,5 +49,6 @@ module.exports = {
     'simple-import-sort/exports': 'error',
     'prettier/prettier': ['error', { endOfLine: 'auto' }],
     'no-param-reassign': 'off',
+    'react/display-name': 'off',
   },
 };

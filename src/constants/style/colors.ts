@@ -6,16 +6,16 @@ const COLORS: IString = {
   white300: '#F5F5F5',
   white400: '#EFF3F4',
 
-  gray300: '#D8D8D8',
   gray100: '#E4EAED',
   gray200: '#E6E6E6',
+  gray300: '#D8D8D8',
   gray400: '#C4C4C4',
   gray500: '#5C6C79',
   gray600: '#536471',
 
-  blue300: '#1E97E1',
-  blue200: '#1D9BF0',
   blue100: '#1DA1F2',
+  blue200: '#1D9BF0',
+  blue300: '#1E97E1',
 
   pink: '#EF1C5C',
 
