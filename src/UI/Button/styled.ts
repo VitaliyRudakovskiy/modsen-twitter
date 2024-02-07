@@ -7,7 +7,7 @@ import { IStyledButtonProps } from './types';
 
 export const StyledButton = styled.button<IStyledButtonProps>`
   ${flexCenter};
-  gap: ${({ theme }) => theme.gaps.xs3};
+  gap: ${({ theme }) => theme.gaps.xs2};
   width: ${({ $width }) => $width};
   max-height: ${({ theme }) => theme.gaps.xl7};
   font-family: ${({ theme, $variant }) =>
@@ -20,8 +20,8 @@ export const StyledButton = styled.button<IStyledButtonProps>`
       : theme.fonts.fontSize.l}px;
   font-weight: ${({ theme, $variant }) =>
     $variant === ButtonVariants.secondary
-      ? theme.fonts.fontWeight.l
-      : theme.fonts.fontWeight.m};
+      ? theme.fonts.fontWeight.m
+      : theme.fonts.fontWeight.l};
   padding: ${({ theme }) => theme.gaps.l} 0;
   border: ${({ theme, $variant }) =>
     $variant === ButtonVariants.secondary
@@ -40,6 +40,6 @@ export const StyledButton = styled.button<IStyledButtonProps>`
 `;
 
 export const ButtonIcon = styled.img`
-  width: ${({ theme }) => theme.sizes.px32};
-  height: ${({ theme }) => theme.sizes.px32};
+  width: ${({ theme }) => theme.gaps.xl};
+  height: ${({ theme }) => theme.gaps.xl};
 `;

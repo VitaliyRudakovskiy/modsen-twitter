@@ -32,7 +32,8 @@ import StarsIcon from '@assets/icons/stars.svg';
 import StatisticsIcon from '@assets/icons/statistics.svg';
 import StatisticsHorizontalIcon from '@assets/icons/statistics-horizontal.svg';
 import HashtagBaldIcon from '@icons/hashtag-bald.svg';
-import TwitterIcon from '@icons/twitter.svg';
+import TwitterIcon from '@icons/twitter.png';
+import TwitterBlackIcon from '@icons/twitter.svg';
 
 import { IString } from './types';
 
@@ -71,6 +72,7 @@ const ICONS: IString = {
   stars: StarsIcon,
   statstics: StatisticsIcon,
   statsticsHorizontal: StatisticsHorizontalIcon,
+  twitterBlack: TwitterBlackIcon,
   twitter: TwitterIcon,
 };
 

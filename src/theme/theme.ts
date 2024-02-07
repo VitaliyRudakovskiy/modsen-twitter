@@ -30,6 +30,8 @@ export const lightTheme: DefaultTheme = {
   inputColor: COLORS.white100,
   inputBorderColor: COLORS.gray300,
   inputPlaceholder: COLORS.gray400,
+  secondaryBackgroundColor: COLORS.white100,
+  secondaryColor: COLORS.black300,
 };
 
 export const darkTheme: DefaultTheme = {
@@ -42,4 +44,6 @@ export const darkTheme: DefaultTheme = {
   inputColor: COLORS.gray600,
   inputBorderColor: COLORS.black100,
   inputPlaceholder: COLORS.gray400,
+  secondaryBackgroundColor: COLORS.black100,
+  secondaryColor: COLORS.white100,
 };
