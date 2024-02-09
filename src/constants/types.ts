@@ -12,10 +12,25 @@ export type IFonts = {
   fontWeight: IStringOrNumber;
 };
 
-type IFooterLink = {
+export type IFooterLink = {
   id: number;
   text: string;
-  to?: string;
+  to: string;
 };
 
-export type IFooterLinks = IFooterLink[];
+export type ISidebarLink = {
+  title: string;
+  path: string;
+  icon: string;
+};
+
+export type ISignupSelect = {
+  options: string[] | number[];
+  placeholder: string;
+  width: string;
+};
+
+export type IFormInput = {
+  placeholder: string;
+  type: 'text' | 'password' | 'email';
+};

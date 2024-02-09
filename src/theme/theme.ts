@@ -32,6 +32,9 @@ export const lightTheme: DefaultTheme = {
   inputPlaceholder: COLORS.gray400,
   secondaryBackgroundColor: COLORS.white100,
   secondaryColor: COLORS.black300,
+  profileEmailColor: COLORS.gray500,
+  notFoundGradient: `linear-gradient(180deg, ${COLORS.white100} 0%, ${COLORS.blue300} 100%);`,
+  goBackLink: COLORS.white300,
 };
 
 export const darkTheme: DefaultTheme = {
@@ -46,4 +49,7 @@ export const darkTheme: DefaultTheme = {
   inputPlaceholder: COLORS.gray400,
   secondaryBackgroundColor: COLORS.black100,
   secondaryColor: COLORS.white100,
+  profileEmailColor: COLORS.gray300,
+  notFoundGradient: `linear-gradient(180deg, ${COLORS.gray500} 0%, ${COLORS.black200} 100%);`,
+  goBackLink: COLORS.blue200,
 };

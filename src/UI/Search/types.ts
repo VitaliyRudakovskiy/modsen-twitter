@@ -1,7 +1,7 @@
 import { ChangeEvent } from 'react';
 
-export interface ISearchInputProps {
+export type ISearchInputProps = {
   placeholder?: string;
   value: string;
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
-}
+};

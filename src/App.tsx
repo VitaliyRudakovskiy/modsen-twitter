@@ -1,16 +1,14 @@
-import Auth from '@pages/Auth';
+import { RouterProvider } from 'react-router-dom';
 import ThemeProvider from '@providers/ThemeProvider';
 import ThemeToggler from '@UI/ThemeToggler';
 
-import AppContainer from './styled';
+import router from './routes';
 
 const App = () => {
   return (
     <ThemeProvider>
-      <AppContainer>
-        <ThemeToggler />
-        <Auth />
-      </AppContainer>
+      <ThemeToggler />
+      <RouterProvider router={router} />
     </ThemeProvider>
   );
 };

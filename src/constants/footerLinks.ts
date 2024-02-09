@@ -1,6 +1,6 @@
-import { IFooterLinks } from './types';
+import { IFooterLink } from './types';
 
-const FooterLinks: IFooterLinks = [
+const FooterLinks: IFooterLink[] = [
   {
     id: 1,
     text: 'About',
@@ -83,7 +83,8 @@ const FooterLinks: IFooterLinks = [
   },
   {
     id: 17,
-    text: '© 2023 Twitter, Inc.',
+    text: '© 2024 Twitter, Inc.',
+    to: '/twitterinc',
   },
 ];
 

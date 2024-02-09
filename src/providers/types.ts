@@ -1,10 +1,10 @@
 import { ReactNode } from 'react';
 
-export interface IThemeContextProps {
+export type IThemeContextProps = {
   theme: 'dark' | 'light';
   toggleTheme: () => void;
-}
+};
 
-export interface IThemeProviderProps {
+export type IThemeProviderProps = {
   children: ReactNode;
-}
+};

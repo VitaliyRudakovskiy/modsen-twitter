@@ -26,7 +26,7 @@ const SignupForm = () => {
         ))}
       </SignupInputsContainer>
 
-      <StyledLink to={Routes.AUTH}>Use email</StyledLink>
+      <StyledLink to={Routes.LOGIN}>Use email</StyledLink>
 
       <BirthTitle>Date of Birth</BirthTitle>
       <BirthText>

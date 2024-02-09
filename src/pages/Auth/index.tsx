@@ -1,7 +1,9 @@
+import { useNavigate } from 'react-router-dom';
 import TwitterBg from '@assets/back-twitter.webp';
 import ButtonVariants from '@constants/buttonVariants';
 import FooterLinks from '@constants/footerLinks';
 import ICONS from '@constants/icons';
+import Routes from '@constants/routes';
 import Button from '@UI/Button';
 
 import {
@@ -11,6 +13,7 @@ import {
   ExtraText,
   FooterLink,
   FooterLinksContainer,
+  LoginLink,
   MainContent,
   Paragraph,
   Span,
@@ -22,6 +25,12 @@ import {
 } from './styled';
 
 const Auth = () => {
+  const navigate = useNavigate();
+
+  const handleSignUpClick = () => {
+    navigate(Routes.SIGNUP);
+  };
+
   return (
     <AuthContainer>
       <MainContent>
@@ -34,7 +43,10 @@ const Auth = () => {
             <Button variant={ButtonVariants.secondary} icon={ICONS.google}>
               Sign up with Google
             </Button>
-            <Button variant={ButtonVariants.secondary}>
+            <Button
+              variant={ButtonVariants.secondary}
+              onClick={handleSignUpClick}
+            >
               Sign up with email
             </Button>
           </ButtonsContainer>
@@ -45,13 +57,15 @@ const Auth = () => {
           </TermsText>
           <ExtraText>
             <Paragraph>Already have an account?</Paragraph>
-            <Span> Log In</Span>
+            <LoginLink to={Routes.LOGIN}> Log In</LoginLink>
           </ExtraText>
         </AuthContent>
       </MainContent>
       <FooterLinksContainer>
         {FooterLinks.map(({ id, text, to }) => (
-          <FooterLink key={id}>{text}</FooterLink>
+          <FooterLink key={id} to={to}>
+            {text}
+          </FooterLink>
         ))}
       </FooterLinksContainer>
     </AuthContainer>

@@ -68,7 +68,10 @@ export const Paragraph = styled.span`
   font-size: ${({ theme }) => theme.fonts.fontSize.m}px;
 `;
 
-export const LoginLink = styled(Link)``;
+export const LoginLink = styled(Link)`
+  color: ${({ theme }) => theme.colors.blue300};
+  text-decoration: none;
+`;
 
 export const FooterLinksContainer = styled.div`
   ${flexCenter};
@@ -76,6 +79,8 @@ export const FooterLinksContainer = styled.div`
   gap: ${({ theme }) => theme.gaps.m};
 `;
 
-export const FooterLink = styled.span`
+export const FooterLink = styled(Link)`
   font-size: ${({ theme }) => theme.fonts.fontSize.xs}px;
+  color: ${({ theme }) => theme.textColor};
+  text-decoration: none;
 `;

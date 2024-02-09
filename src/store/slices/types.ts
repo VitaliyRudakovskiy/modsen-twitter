@@ -1,3 +1,3 @@
-export interface IThemeState {
+export type IThemeState = {
   mode: 'dark' | 'light';
-}
+};

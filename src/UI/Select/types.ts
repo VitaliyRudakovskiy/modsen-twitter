@@ -1,13 +1,13 @@
-export interface ISelectProps {
+export type ISelectProps = {
   placeholder: string;
   options: number[] | string[];
   width?: string;
-}
+};
 
-export interface IStyledsSelectProps {
+export type IStyledsSelectProps = {
   $width: string;
-}
+};
 
-export interface IArrowStyledProps {
+export type IArrowStyledProps = {
   $isOpened: boolean;
-}
+};

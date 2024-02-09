@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import ButtonVariants from '@constants/buttonVariants';
 
-export interface IButtonProps {
+export type IButtonProps = {
   icon?: string;
   variant: ButtonVariants;
   children: string | ReactNode;
@@ -9,10 +9,10 @@ export interface IButtonProps {
   type?: 'button' | 'submit';
   width?: string;
   onClick?: () => void;
-}
+};
 
-export interface IStyledButtonProps {
+export type IStyledButtonProps = {
   $variant: ButtonVariants;
   $width: string;
   disabled: boolean;
-}
+};
