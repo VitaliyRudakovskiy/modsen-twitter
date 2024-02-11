@@ -19,6 +19,8 @@ const COLORS: IString = {
 
   pink: '#EF1C5C',
 
+  orange: '#FF8F00',
+
   black100: '#312F2F',
   black200: '#121313',
   black300: '#000000',

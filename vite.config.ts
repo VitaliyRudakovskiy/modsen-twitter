@@ -3,7 +3,7 @@
 
 import react from '@vitejs/plugin-react-swc';
 import { defineConfig } from 'vite';
-import path from 'path';
+import { resolve } from 'path';
 
 export default defineConfig({
   plugins: [react()],
@@ -13,19 +13,21 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@assets': path.resolve(__dirname, './src/assets'),
-      '@components': path.resolve(__dirname, './src/components'),
-      '@constants': path.resolve(__dirname, './src/constants'),
-      '@helpers': path.resolve(__dirname, './src/helpers'),
-      '@hooks': path.resolve(__dirname, './src/hooks'),
-      '@icons': path.resolve(__dirname, './src/assets/icons'),
-      '@pages': path.resolve(__dirname, './src/pages'),
-      '@providers': path.resolve(__dirname, './src/providers'),
-      '@routes': path.resolve(__dirname, './src/routes'),
-      '@store': path.resolve(__dirname, './src/store'),
-      '@theme': path.resolve(__dirname, './src/theme'),
-      '@UI': path.resolve(__dirname, './src/UI'),
-      '@utils': path.resolve(__dirname, './src/utils'),
+      '@assets': resolve(__dirname, './src/assets'),
+      '@components': resolve(__dirname, './src/components'),
+      '@constants': resolve(__dirname, './src/constants'),
+      '@db': resolve(__dirname, './src/db'),
+      '@helpers': resolve(__dirname, './src/helpers'),
+      '@hooks': resolve(__dirname, './src/hooks'),
+      '@icons': resolve(__dirname, './src/assets/icons'),
+      '@pages': resolve(__dirname, './src/pages'),
+      '@providers': resolve(__dirname, './src/providers'),
+      '@routes': resolve(__dirname, './src/routes'),
+      '@store': resolve(__dirname, './src/store'),
+      '@theme': resolve(__dirname, './src/theme'),
+      '@UI': resolve(__dirname, './src/UI'),
+      '@utils': resolve(__dirname, './src/utils'),
+      '@zod': resolve(__dirname, './src/zod'),
     },
   },
 });

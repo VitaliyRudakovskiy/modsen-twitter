@@ -4,6 +4,7 @@ import Routes from '@constants/routes';
 import Auth from '@pages/Auth';
 import Login from '@pages/Login';
 import NotFound from '@pages/NotFound';
+import Profile from '@pages/Profile';
 import Signup from '@pages/Signup';
 
 const router = createBrowserRouter([
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: Routes.SIGNUP,
     element: <Signup />,
+  },
+  {
+    path: Routes.PROFILE,
+    element: <Profile />,
   },
   {
     path: Routes.NOT_FOUND,

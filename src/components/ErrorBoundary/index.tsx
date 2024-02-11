@@ -13,7 +13,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor(props: ErrorBoundaryProps) {
     super(props);
     this.state = {
-      hasError: true,
+      hasError: false,
       error: null,
     };
   }
@@ -29,7 +29,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
     const { hasError, error } = this.state;
     const { children } = this.props;
 
-    if (hasError) {
+    if (hasError || error) {
       return (
         <ErrorBoundaryWrapper>
           <ErrorBoundaryImage src={errorImage} alt='something wrong' />

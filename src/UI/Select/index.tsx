@@ -1,4 +1,10 @@
-import { MouseEventHandler, useEffect, useRef, useState } from 'react';
+import {
+  forwardRef,
+  MouseEventHandler,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { useSelector } from 'react-redux';
 import ICONS from '@constants/icons';
 import { selectTheme } from '@store/slices/themeSlice';
@@ -11,48 +17,55 @@ import {
 } from './styled';
 import { ISelectProps } from './types';
 
-const Select = ({ placeholder, options, width = '100%' }: ISelectProps) => {
-  const [isOpened, setIsOpened] = useState(false);
-  const theme = useSelector(selectTheme);
-  const selectRef = useRef(null);
+const Select = forwardRef<HTMLSelectElement, ISelectProps>(
+  ({ placeholder, options, width = '100%', ...props }, ref) => {
+    const [isOpened, setIsOpened] = useState(false);
+    const theme = useSelector(selectTheme);
+    const selectRef = useRef(null);
 
-  const handleClickOutside = () => {
-    if (selectRef.current) {
-      setIsOpened(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener('click', handleClickOutside);
-
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
+    const handleClickOutside = () => {
+      if (selectRef.current) {
+        setIsOpened(false);
+      }
     };
-  }, []);
 
-  const handleToggle: MouseEventHandler<HTMLSelectElement> = (event) => {
-    event.stopPropagation();
-    setIsOpened((prevOpened) => !prevOpened);
-  };
+    useEffect(() => {
+      document.addEventListener('click', handleClickOutside);
 
-  const Icon = theme === 'light' ? ICONS.arrowDown : ICONS.arrowDownDark;
+      return () => {
+        document.removeEventListener('click', handleClickOutside);
+      };
+    }, []);
 
-  return (
-    <StyledSelectContainer $width={width}>
-      <StyledSelect ref={selectRef} onClick={handleToggle} defaultValue=''>
-        <StyledOption value='' disabled>
-          {placeholder}
-        </StyledOption>
+    const handleToggle: MouseEventHandler<HTMLSelectElement> = (event) => {
+      event.stopPropagation();
+      setIsOpened((prevOpened) => !prevOpened);
+    };
 
-        {options.map((option) => (
-          <StyledOption key={option} value={option}>
-            {option}
+    const Icon = theme === 'light' ? ICONS.arrowDown : ICONS.arrowDownDark;
+
+    return (
+      <StyledSelectContainer $width={width}>
+        <StyledSelect
+          ref={ref}
+          onClick={handleToggle}
+          defaultValue=''
+          {...props}
+        >
+          <StyledOption value='' disabled>
+            {placeholder}
           </StyledOption>
-        ))}
-      </StyledSelect>
-      <ArrowImage src={Icon} alt='dropdown arrow' $isOpened={isOpened} />
-    </StyledSelectContainer>
-  );
-};
+
+          {options.map((option) => (
+            <StyledOption key={option} value={option}>
+              {option}
+            </StyledOption>
+          ))}
+        </StyledSelect>
+        <ArrowImage src={Icon} alt='dropdown arrow' $isOpened={isOpened} />
+      </StyledSelectContainer>
+    );
+  }
+);
 
 export default Select;

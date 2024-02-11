@@ -1,32 +1,57 @@
+import { useForm } from 'react-hook-form';
 import ButtonVariants from '@constants/buttonVariants';
 import Routes from '@constants/routes';
-import { signupInputs, signupSelects } from '@constants/signupElements';
+import {
+  signupDefaultValues,
+  signupInputs,
+  signupSelects,
+} from '@constants/signupElements';
+import { zodResolver } from '@hookform/resolvers/zod';
 import Button from '@UI/Button';
 import Input from '@UI/Input';
 import Select from '@UI/Select';
+import { signupScheme } from '@zod/signupScheme';
 
 import {
   BirthText,
   BirthTitle,
+  ErrorMessage,
+  InputContainer,
   SelectsContainer,
   SignupFormContainer,
   SignupInputsContainer,
   SignupTitle,
   StyledLink,
 } from './styled';
+import { ISignupForm, ISignupFormProps } from './types';
 
-const SignupForm = () => {
+const SignupForm = ({ onSubmit, isButtonActive }: ISignupFormProps) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useForm<ISignupForm>({
+    resolver: zodResolver(signupScheme),
+    defaultValues: signupDefaultValues,
+    mode: 'onChange',
+  });
+
   return (
-    <SignupFormContainer>
+    <SignupFormContainer onSubmit={handleSubmit(onSubmit)}>
       <SignupTitle>Create an account</SignupTitle>
 
       <SignupInputsContainer>
-        {signupInputs.map(({ placeholder, type }) => (
-          <Input key={placeholder} placeholder={placeholder} type={type} />
+        {signupInputs.map(({ placeholder, type, name }) => (
+          <InputContainer key={placeholder}>
+            <Input {...register(name)} placeholder={placeholder} type={type} />
+            {errors && errors[name] && (
+              <ErrorMessage>{errors[name]?.message}</ErrorMessage>
+            )}
+          </InputContainer>
         ))}
       </SignupInputsContainer>
 
-      <StyledLink to={Routes.LOGIN}>Use email</StyledLink>
+      <StyledLink to={Routes.AUTH}>Use email</StyledLink>
 
       <BirthTitle>Date of Birth</BirthTitle>
       <BirthText>
@@ -37,8 +62,9 @@ const SignupForm = () => {
       </BirthText>
 
       <SelectsContainer>
-        {signupSelects.map(({ options, placeholder, width }) => (
+        {signupSelects.map(({ options, placeholder, width, name }) => (
           <Select
+            {...register(name)}
             key={placeholder}
             options={options}
             placeholder={placeholder}
@@ -46,7 +72,11 @@ const SignupForm = () => {
           />
         ))}
       </SelectsContainer>
-      <Button variant={ButtonVariants.primary} type='submit'>
+      <Button
+        variant={ButtonVariants.primary}
+        type='submit'
+        disabled={!isButtonActive || !isValid}
+      >
         Next
       </Button>
     </SignupFormContainer>

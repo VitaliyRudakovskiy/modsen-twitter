@@ -1,4 +1,4 @@
-const BEGIN_YEAR = 1950;
+const BEGIN_YEAR = 1960;
 
 export const Months = [
   'January',

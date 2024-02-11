@@ -22,6 +22,10 @@ export const LoginInputsContainer = styled.div`
   width: ${({ theme }) => theme.sizes.full};
 `;
 
+export const ErrorMessage = styled.p`
+  color: ${({ theme }) => theme.colors.orange};
+`;
+
 export const SignupLink = styled(Link)`
   display: flex;
   align-self: flex-end;

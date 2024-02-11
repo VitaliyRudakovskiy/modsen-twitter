@@ -50,5 +50,6 @@ module.exports = {
     'prettier/prettier': ['error', { endOfLine: 'auto' }],
     'no-param-reassign': 'off',
     'react/display-name': 'off',
+    'react/jsx-props-no-spreading': 'off',
   },
 };

@@ -2,7 +2,9 @@ import { initializeApp } from 'firebase/app';
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  GoogleAuthProvider,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
 } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
@@ -30,4 +32,16 @@ const logout = () => signOut(auth);
 const firestore = getFirestore(app);
 const storage = getStorage(app);
 
-export { app, auth, register, signin, logout, firestore, storage };
+const provider = new GoogleAuthProvider();
+
+export {
+  app,
+  auth,
+  firestore,
+  logout,
+  provider,
+  register,
+  signin,
+  signInWithPopup,
+  storage,
+};

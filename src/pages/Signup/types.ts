@@ -7,8 +7,3 @@ export type ISignupForm = {
   day: string;
   year: string;
 };
-
-export type ISignupFormProps = {
-  onSubmit: (form: ISignupForm) => void;
-  isButtonActive: boolean;
-};

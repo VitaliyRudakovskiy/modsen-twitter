@@ -20,6 +20,16 @@ export const SignupInputsContainer = styled.div`
   gap: ${({ theme }) => theme.gaps.m};
 `;
 
+export const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.gaps.xs};
+`;
+
+export const ErrorMessage = styled.p`
+  color: ${({ theme }) => theme.colors.orange};
+`;
+
 export const StyledLink = styled(Link)`
   font-size: ${({ theme }) => theme.fonts.fontSize.l}px;
   color: ${({ theme }) => theme.colors.blue300};

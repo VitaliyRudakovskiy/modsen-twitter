@@ -5,6 +5,7 @@ import FooterLinks from '@constants/footerLinks';
 import ICONS from '@constants/icons';
 import Routes from '@constants/routes';
 import Button from '@UI/Button';
+import signupWithGoogle from '@utils/signupWithGoogle';
 
 import {
   AuthContainer,
@@ -31,6 +32,14 @@ const Auth = () => {
     navigate(Routes.SIGNUP);
   };
 
+  const handleGoogleSignUp = async () => {
+    try {
+      await signupWithGoogle(navigate);
+    } catch (error) {
+      throw new Error(`Error while signing up with Google: ${error}`);
+    }
+  };
+
   return (
     <AuthContainer>
       <MainContent>
@@ -40,7 +49,11 @@ const Auth = () => {
           <Title>Happening now</Title>
           <Subtitle>Join Twitter today</Subtitle>
           <ButtonsContainer>
-            <Button variant={ButtonVariants.secondary} icon={ICONS.google}>
+            <Button
+              variant={ButtonVariants.secondary}
+              icon={ICONS.google}
+              onClick={handleGoogleSignUp}
+            >
               Sign up with Google
             </Button>
             <Button
