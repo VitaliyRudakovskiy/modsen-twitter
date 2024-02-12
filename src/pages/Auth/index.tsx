@@ -1,3 +1,4 @@
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import TwitterBg from '@assets/back-twitter.webp';
 import ButtonVariants from '@constants/buttonVariants';
@@ -5,7 +6,7 @@ import FooterLinks from '@constants/footerLinks';
 import ICONS from '@constants/icons';
 import Routes from '@constants/routes';
 import Button from '@UI/Button';
-import signupWithGoogle from '@utils/signupWithGoogle';
+import signupWithGoogle from '@utils/signUpWithGoogle';
 
 import {
   AuthContainer,
@@ -27,6 +28,7 @@ import {
 
 const Auth = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSignUpClick = () => {
     navigate(Routes.SIGNUP);
@@ -34,7 +36,7 @@ const Auth = () => {
 
   const handleGoogleSignUp = async () => {
     try {
-      await signupWithGoogle(navigate);
+      await signupWithGoogle(navigate, dispatch);
     } catch (error) {
       throw new Error(`Error while signing up with Google: ${error}`);
     }

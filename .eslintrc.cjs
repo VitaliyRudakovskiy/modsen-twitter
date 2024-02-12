@@ -51,5 +51,6 @@ module.exports = {
     'no-param-reassign': 'off',
     'react/display-name': 'off',
     'react/jsx-props-no-spreading': 'off',
+    'react-hooks/rules-of-hooks': 'off',
   },
 };

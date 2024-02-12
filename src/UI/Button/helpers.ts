@@ -9,6 +9,10 @@ const secondaryColor = ({ theme }: DefaultTheme) => theme.secondaryColor;
 const secondaryBackgroundColor = ({ theme }: DefaultTheme) =>
   theme.secondaryBackgroundColor;
 
+const textXL = ({ theme }: DefaultTheme) => theme.fonts.fontSize.xl;
+const textL = ({ theme }: DefaultTheme) => theme.fonts.fontSize.l;
+const textS = ({ theme }: DefaultTheme) => theme.fonts.fontSize.s;
+
 export const defineBackgroundColor = (variant: string, disabled: boolean) => {
   switch (true) {
     case disabled:
@@ -33,5 +37,16 @@ export const defineColor = (variant: string, disabled: boolean) => {
       return secondaryColor;
     default:
       return white;
+  }
+};
+
+export const defineTextSize = (variant: string) => {
+  switch (true) {
+    case variant === ButtonVariants.follow:
+      return textS;
+    case variant === ButtonVariants.secondary:
+      return textXL;
+    default:
+      return textL;
   }
 };

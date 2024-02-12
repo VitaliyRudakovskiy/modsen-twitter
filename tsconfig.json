@@ -28,7 +28,6 @@
       "@constants/*": ["constants/*"],
       "@db/*": ["db/*"],
       "@helpers/*": ["helpers/*"],
-      "@hooks/*": ["hooks/*"],
       "@icons/*": ["assets/icons/*"],
       "@pages/*": ["pages/*"],
       "@providers/*": ["providers/*"],
@@ -37,9 +36,9 @@
       "@theme/*": ["theme/*"],
       "@UI/*": ["UI/*"],
       "@utils/*": ["utils/*"],
-      "@zod/*": ["zod/*"],
-    },
+      "@zod/*": ["zod/*"]
+    }
   },
   "include": ["src", ".eslintrc.cjs"],
-  "references": [{ "path": "./tsconfig.node.json" }],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

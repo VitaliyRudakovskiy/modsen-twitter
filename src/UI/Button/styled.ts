@@ -2,7 +2,7 @@ import ButtonVariants from '@constants/buttonVariants';
 import { flexCenter } from '@theme/style/mixins';
 import styled from 'styled-components';
 
-import { defineBackgroundColor, defineColor } from './helpers';
+import { defineBackgroundColor, defineColor, defineTextSize } from './helpers';
 import { IStyledButtonProps } from './types';
 
 export const StyledButton = styled.button<IStyledButtonProps>`
@@ -14,15 +14,14 @@ export const StyledButton = styled.button<IStyledButtonProps>`
     $variant === ButtonVariants.secondary
       ? theme.fonts.fontFamily.roboto
       : theme.fonts.fontFamily.robotoSerif};
-  font-size: ${({ theme, $variant }) =>
-    $variant === ButtonVariants.secondary
-      ? theme.fonts.fontSize.xl
-      : theme.fonts.fontSize.l}px;
+  font-size: ${({ $variant }) => defineTextSize($variant)}px;
   font-weight: ${({ theme, $variant }) =>
     $variant === ButtonVariants.secondary
       ? theme.fonts.fontWeight.m
       : theme.fonts.fontWeight.l};
-  padding: ${({ theme }) => theme.gaps.l} 0;
+  padding: ${({ theme, $variant }) =>
+      $variant === ButtonVariants.follow ? theme.gaps.xs : theme.gaps.l}
+    0;
   border: ${({ theme, $variant }) =>
     $variant === ButtonVariants.secondary
       ? `1px solid ${theme.colors.gray300}`

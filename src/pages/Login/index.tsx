@@ -1,14 +1,18 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import LoginForm from '@components/LoginForm';
 import ICONS from '@constants/icons';
+import Routes from '@constants/routes';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { setCurrentUser } from '@store/slices/userSlice';
+import { IUser } from '@store/types';
+import getUserDataAndLogin from '@utils/getUserFromFirestore';
+import loginScheme from '@zod/loginScheme';
 
 import { LoginContainer, TwitterLogo } from './styled';
 import { ILoginForm } from './types';
-import { useState } from 'react';
-import { zodResolver } from '@hookform/resolvers/zod';
-import loginScheme from '@zod/loginScheme';
-import { useNavigate } from 'react-router-dom';
-import { auth, signin } from '@db/index';
 
 const Login = () => {
   const { reset } = useForm<ILoginForm>({
@@ -17,12 +21,22 @@ const Login = () => {
   const [isButtonActive, setIsButtonActive] = useState<boolean>(true);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const onSubmit = async ({ phoneOrEmail, password }: ILoginForm) => {
     try {
       setIsButtonActive(false);
-      const user = await signin(phoneOrEmail, password);
-      console.log(auth.currentUser);
+      const { userData, token } = await getUserDataAndLogin(
+        phoneOrEmail,
+        password
+      );
+
+      if (token) {
+        dispatch(setCurrentUser({ ...(userData as IUser), token }));
+        navigate(Routes.HOME);
+      } else {
+        throw new Error('User not found');
+      }
     } catch (error) {
       throw new Error(`An error occured while submitting login form: ${error}`);
     } finally {

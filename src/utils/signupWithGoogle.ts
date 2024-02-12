@@ -1,9 +1,15 @@
 import { NavigateFunction } from 'react-router-dom';
 import Routes from '@constants/routes';
 import { auth, firestore, provider, signInWithPopup } from '@db/index';
+import { DispatchRTK } from '@store/index';
+import { setCurrentUser } from '@store/slices/userSlice';
+import { IUser } from '@store/types';
 import { addDoc, collection, getDocs, query, where } from 'firebase/firestore';
 
-const signupWithGoogle = async (navigate: NavigateFunction) => {
+const signUpWithGoogle = async (
+  navigate: NavigateFunction,
+  dispatch: DispatchRTK
+) => {
   try {
     const response = await signInWithPopup(auth, provider);
     const { user } = response;
@@ -24,13 +30,17 @@ const signupWithGoogle = async (navigate: NavigateFunction) => {
 
     if (result.empty) {
       await addDoc(userCollection, userData);
+      const token = await user.getIdToken();
+      dispatch(setCurrentUser({ ...(userData as IUser), token }));
       navigate(Routes.HOME);
     } else {
+      const token = await user.getIdToken();
       navigate(Routes.HOME);
+      dispatch(setCurrentUser({ ...(userData as IUser), token }));
     }
   } catch (error) {
     throw new Error(`An error occured while Google login: ${error}`);
   }
 };
 
-export default signupWithGoogle;
+export default signUpWithGoogle;

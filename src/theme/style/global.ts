@@ -13,6 +13,10 @@ const GlobalStyle = createGlobalStyle`
         outline: none;
         user-select: none;
     }
+
+    body {
+        background-color: ${({ theme }) => theme.backgroundColor}
+    }
 `;
 
 export default GlobalStyle;

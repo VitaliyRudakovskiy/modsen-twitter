@@ -15,6 +15,6 @@ export const Months = [
   'December',
 ];
 
-export const Years = Array.from({ length: 65 }, (_, i) => BEGIN_YEAR + i + 1);
+export const Years = Array.from({ length: 55 }, (_, i) => BEGIN_YEAR + i + 1);
 
 export const Days = Array.from({ length: 31 }, (_, i) => i + 1);

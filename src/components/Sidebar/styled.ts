@@ -5,8 +5,6 @@ export const SidebarWrapper = styled.section`
   display: flex;
   flex-direction: column;
   align-items: start;
-  background-color: ${({ theme }) => theme.backgroundColor};
-  color: ${({ theme }) => theme.textColor};
 `;
 
 export const SidebarLinksContainer = styled.div`

@@ -1,7 +1,9 @@
+import { useSelector } from 'react-redux';
 import AvatarInfo from '@assets/avatar.png';
 import ButtonVariants from '@constants/buttonVariants';
 import ICONS from '@constants/icons';
 import SidebarLinks from '@constants/sidebarLinks';
+import { selectUser } from '@store/slices/userSlice';
 import Button from '@UI/Button';
 
 import {
@@ -18,6 +20,8 @@ import {
 } from './styled';
 
 const Sidebar = () => {
+  const { name, email } = useSelector(selectUser);
+
   return (
     <SidebarWrapper>
       <TwitterIcon src={ICONS.twitter} alt='twitter' />
@@ -40,8 +44,8 @@ const Sidebar = () => {
       <ProfileWrapper>
         <Avatar src={AvatarInfo} alt='Avatar' />
         <ProfileInfo>
-          <ProfileName>Vitaliy</ProfileName>
-          <ProfileEmail>vitalikrud03@gmail.com</ProfileEmail>
+          <ProfileName>{name}</ProfileName>
+          <ProfileEmail>@{email}</ProfileEmail>
         </ProfileInfo>
       </ProfileWrapper>
 

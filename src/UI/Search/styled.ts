@@ -4,10 +4,10 @@ export const SearchContainer = styled.div`
   display: flex;
   align-items: center;
   gap: ${({ theme }) => theme.gaps.s};
-  width: 320px;
+  width: 100%;
   padding: ${({ theme }) => theme.gaps.m};
   color: ${({ theme }) => theme.textColor};
-  background-color: ${({ theme }) => theme.inputColor};
+  background-color: ${({ theme }) => theme.searchColor};
   border: 1px solid ${({ theme }) => theme.inputBorderColor};
   border-radius: ${({ theme }) => theme.sizes.px32};
   transition: all 0.2s;
@@ -19,6 +19,7 @@ export const SearchContainer = styled.div`
 
 export const SearchInput = styled.input`
   font-size: ${({ theme }) => theme.fonts.fontSize.l}px;
+  width: 90%;
   color: inherit;
   background-color: inherit;
   border: none;

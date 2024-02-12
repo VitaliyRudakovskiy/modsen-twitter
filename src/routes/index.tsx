@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
-import Sidebar from '@components/Sidebar';
 import Routes from '@constants/routes';
 import Auth from '@pages/Auth';
+import Home from '@pages/Home';
 import Login from '@pages/Login';
 import NotFound from '@pages/NotFound';
 import Profile from '@pages/Profile';
@@ -14,7 +14,7 @@ const router = createBrowserRouter([
   },
   {
     path: Routes.HOME,
-    element: <Sidebar />,
+    element: <Home />,
   },
   {
     path: Routes.LOGIN,

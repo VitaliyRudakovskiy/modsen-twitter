@@ -9,6 +9,7 @@ const setUserToFirestore = async (
   birthDate: string
 ) => {
   const credentials = await register(email, password);
+  const token = await credentials.user.getIdToken();
   const userData = {
     name,
     email,
@@ -20,6 +21,7 @@ const setUserToFirestore = async (
   const userCollection = collection(firestore, 'users');
 
   await addDoc(userCollection, userData);
+  return { userData: { ...userData, token } };
 };
 
 export default setUserToFirestore;

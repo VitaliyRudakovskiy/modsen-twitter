@@ -1,10 +1,17 @@
-// import { auth } from '@db/index';
+import ProfileSection from '@components/ProfileSection';
+import SearchSidebar from '@components/SearchSidebar';
+import Sidebar from '@components/Sidebar';
+
+import { ProfileWrapper } from './styled';
 
 const Profile = () => {
-  // const user = auth.currentUser;
-  // console.log(user);
-
-  return <div>Profile</div>;
+  return (
+    <ProfileWrapper>
+      <Sidebar />
+      <ProfileSection />
+      <SearchSidebar />
+    </ProfileWrapper>
+  );
 };
 
 export default Profile;

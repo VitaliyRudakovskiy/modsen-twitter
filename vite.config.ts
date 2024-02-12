@@ -18,7 +18,6 @@ export default defineConfig({
       '@constants': resolve(__dirname, './src/constants'),
       '@db': resolve(__dirname, './src/db'),
       '@helpers': resolve(__dirname, './src/helpers'),
-      '@hooks': resolve(__dirname, './src/hooks'),
       '@icons': resolve(__dirname, './src/assets/icons'),
       '@pages': resolve(__dirname, './src/pages'),
       '@providers': resolve(__dirname, './src/providers'),

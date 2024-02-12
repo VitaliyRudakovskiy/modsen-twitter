@@ -12,6 +12,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 
 import themeSlice from './slices/themeSlice';
+import userSlice from './slices/userSlice';
 
 const persistConfig = {
   key: 'root',
@@ -20,6 +21,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   theme: themeSlice,
+  user: userSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -36,5 +38,6 @@ const store = configureStore({
 });
 
 export const persistor = persistStore(store);
+export type DispatchRTK = typeof store.dispatch;
 
 export default store;
