@@ -1,3 +1,4 @@
+import Avatar from '@assets/avatar.png';
 import ButtonVariants from '@constants/buttonVariants';
 import Button from '@UI/Button';
 
@@ -9,8 +10,6 @@ import {
   UserName,
   UserPhoto,
 } from './styled';
-
-import Avatar from '@assets/avatar.png';
 
 const RecommendedUser = () => {
   return (

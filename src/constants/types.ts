@@ -55,3 +55,7 @@ export type ILoginForm = {
   phoneOrEmail: string;
   password: string;
 };
+
+export type IProfileFormInput = Pick<IFormInput, 'placeholder' | 'type'> & {
+  name: 'name' | 'phone' | 'email' | 'password' | 'birthday';
+};
