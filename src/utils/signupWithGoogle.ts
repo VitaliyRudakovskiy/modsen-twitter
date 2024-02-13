@@ -6,7 +6,7 @@ import { setCurrentUser } from '@store/slices/userSlice';
 import { IUser } from '@store/types';
 import { addDoc, collection, getDocs, query, where } from 'firebase/firestore';
 
-const signUpWithGoogle = async (
+const signupWithGoogle = async (
   navigate: NavigateFunction,
   dispatch: DispatchRTK
 ) => {
@@ -43,4 +43,4 @@ const signUpWithGoogle = async (
   }
 };
 
-export default signUpWithGoogle;
+export default signupWithGoogle;

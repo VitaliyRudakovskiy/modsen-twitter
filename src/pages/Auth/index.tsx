@@ -6,7 +6,7 @@ import FooterLinks from '@constants/footerLinks';
 import ICONS from '@constants/icons';
 import Routes from '@constants/routes';
 import Button from '@UI/Button';
-import signupWithGoogle from '@utils/signUpWithGoogle';
+import signupWithGoogle from '@utils/signupWithGoogle';
 
 import {
   AuthContainer,

@@ -1,8 +1,11 @@
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import AvatarInfo from '@assets/avatar.png';
 import ButtonVariants from '@constants/buttonVariants';
 import ICONS from '@constants/icons';
+import Routes from '@constants/routes';
 import SidebarLinks from '@constants/sidebarLinks';
+import { logout } from '@db/index';
 import { selectUser } from '@store/slices/userSlice';
 import Button from '@UI/Button';
 
@@ -21,6 +24,12 @@ import {
 
 const Sidebar = () => {
   const { name, email } = useSelector(selectUser);
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await logout();
+    navigate(Routes.AUTH);
+  };
 
   return (
     <SidebarWrapper>
@@ -49,7 +58,11 @@ const Sidebar = () => {
         </ProfileInfo>
       </ProfileWrapper>
 
-      <Button variant={ButtonVariants.logout} width='230px'>
+      <Button
+        variant={ButtonVariants.logout}
+        width='230px'
+        onClick={handleLogout}
+      >
         Log out
       </Button>
     </SidebarWrapper>
