@@ -1,10 +1,10 @@
-import { IString } from '@constants/types';
+import { IString } from '@/constants/types';
 
 const SIZES: IString = {
   px6: '6px',
   px32: '32px',
   px60: '60px',
-  px120: '120px',
+  px90: '90px',
   px150: '150px',
   px230: '230px',
   px300: '300px',

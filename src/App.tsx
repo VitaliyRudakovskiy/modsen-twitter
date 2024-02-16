@@ -3,23 +3,29 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
 
 import ErrorBoundary from '@/components/ErrorBoundary';
+import Loader from '@/components/Loader';
+import { auth } from '@/db';
 import ThemeProvider from '@/providers/ThemeProvider';
-
-import privateRoutes from './routes/privateRoutes';
-import publicRoutes from './routes/publicRoutes';
-import { auth } from './db';
-import ROUTES from './routes';
+import ROUTES from '@/routes';
+import privateRoutes from '@/routes/privateRoutes';
+import publicRoutes from '@/routes/publicRoutes';
 
 const App = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [isAuth, setIsAuth] = useState(false);
 
   useEffect(
     () =>
       onAuthStateChanged(auth, (user) => {
         setIsAuth(!!user);
+        setIsLoading(false);
       }),
     []
   );
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <ErrorBoundary>

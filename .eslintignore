@@ -1,5 +1,4 @@
 dist
 vite.config.ts
 vitest.setup.ts
-firebase
 .eslintrc.cjs

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -9,6 +10,8 @@ import { logout } from '@/db/index';
 import ROUTES from '@/routes';
 import { selectUser, setCurrentUser } from '@/store/slices/userSlice';
 import Button from '@/UI/Button';
+
+import TweetModal from '../TweetModal';
 
 import {
   Avatar,
@@ -25,6 +28,7 @@ import {
 
 const Sidebar = () => {
   const { name, email } = useSelector(selectUser);
+  const [isTweetModalOpen, setIsTweetModalOpen] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -43,42 +47,53 @@ const Sidebar = () => {
     navigate(ROUTES.AUTH);
   };
 
+  const closeModal = () => setIsTweetModalOpen(false);
+  const showModal = () => setIsTweetModalOpen(true);
+
   return (
-    <SidebarWrapper>
-      <TwitterIcon src={ICONS.twitter} alt='twitter' />
-      <SidebarLinksContainer>
-        {SidebarLinks.map(({ title, path, icon }) => (
-          <SidebarLink
-            className={({ isActive }) => (isActive ? 'active' : '')}
-            key={path}
-            to={path}
-          >
-            <SidebarLinkImage src={icon} alt='sidebar link icon' />
-            {title}
-          </SidebarLink>
-        ))}
-      </SidebarLinksContainer>
+    <>
+      <SidebarWrapper>
+        <TwitterIcon src={ICONS.twitter} alt='twitter' />
+        <SidebarLinksContainer>
+          {SidebarLinks.map(({ title, path, icon }) => (
+            <SidebarLink
+              className={({ isActive }) => (isActive ? 'active' : '')}
+              key={path}
+              to={path}
+            >
+              <SidebarLinkImage src={icon} alt='sidebar link icon' />
+              {title}
+            </SidebarLink>
+          ))}
+        </SidebarLinksContainer>
 
-      <Button variant={ButtonVariants.primary} width='220px'>
-        Tweet
-      </Button>
+        <Button
+          variant={ButtonVariants.primary}
+          width='220px'
+          onClick={showModal}
+        >
+          Tweet
+        </Button>
 
-      <ProfileWrapper>
-        <Avatar src={AvatarInfo} alt='Avatar' />
-        <ProfileInfo>
-          <ProfileName>{name}</ProfileName>
-          <ProfileEmail>@{email}</ProfileEmail>
-        </ProfileInfo>
-      </ProfileWrapper>
+        <ProfileWrapper>
+          <Avatar src={AvatarInfo} alt='Avatar' />
+          <ProfileInfo>
+            <ProfileName>{name}</ProfileName>
+            <ProfileEmail>@{email}</ProfileEmail>
+          </ProfileInfo>
+        </ProfileWrapper>
 
-      <Button
-        variant={ButtonVariants.logout}
-        width='220px'
-        onClick={handleLogout}
-      >
-        Log out
-      </Button>
-    </SidebarWrapper>
+        <Button
+          variant={ButtonVariants.logout}
+          width='220px'
+          onClick={handleLogout}
+        >
+          Log out
+        </Button>
+      </SidebarWrapper>
+
+      {isTweetModalOpen && <TweetModal closeModal={closeModal} />}
+    </>
   );
 };
 

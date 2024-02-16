@@ -1,20 +1,22 @@
 import styled from 'styled-components';
 
 export const TextareaWrapper = styled.div`
-  border: 1px solid ${({ theme }) => theme.colors.gray300};
+  position: relative;
   padding: ${({ theme }) => theme.gaps.m};
   display: flex;
   align-items: flex-start;
   gap: ${({ theme }) => theme.gaps.m};
+  width: ${({ theme }) => theme.sizes.full};
 `;
 
 export const Avatar = styled.img``;
 
 export const Area = styled.textarea`
-  height: ${({ theme }) => theme.sizes.px120};
+  height: ${({ theme }) => theme.sizes.px90};
   width: ${({ theme }) => theme.sizes.full};
   font-size: ${({ theme }) => theme.fonts.fontSize.l}px;
   color: ${({ theme }) => theme.textColor};
+  margin-bottom: 15px;
   background: none;
   border: none;
   resize: none;
@@ -27,7 +29,6 @@ export const Area = styled.textarea`
 `;
 
 export const AreaContainer = styled.div`
-  position: relative;
   width: ${({ theme }) => theme.sizes.full};
 `;
 
