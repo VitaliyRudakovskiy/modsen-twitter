@@ -17,6 +17,7 @@ import ListsDarkIcon from '@/assets/icons/lists-dark.svg';
 import MessagesIcon from '@/assets/icons/messages.svg';
 import MessagesDarkIcon from '@/assets/icons/messages-dark.svg';
 import MoreIcon from '@/assets/icons/more.svg';
+import MoreSimpleIcon from '@/assets/icons/more-simple.png';
 import NotificationIcon from '@/assets/icons/notification.svg';
 import NotificationDarkIcon from '@/assets/icons/notification-dark.svg';
 import PinIcon from '@/assets/icons/pin.svg';
@@ -57,6 +58,7 @@ const ICONS: IString = {
   messages: MessagesIcon,
   messagesDark: MessagesDarkIcon,
   more: MoreIcon,
+  moreSimple: MoreSimpleIcon,
   notification: NotificationIcon,
   notificationDark: NotificationDarkIcon,
   pin: PinIcon,
