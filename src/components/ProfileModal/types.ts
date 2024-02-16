@@ -7,5 +7,4 @@ export type IProfileForm = {
   phone: string;
   email: string;
   birthday: string;
-  password: string;
 };

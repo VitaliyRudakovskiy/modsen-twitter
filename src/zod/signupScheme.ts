@@ -1,5 +1,6 @@
-import { PHONE_NUMBER } from '@constants/regulars';
 import { z } from 'zod';
+
+import { PHONE_NUMBER } from '@/constants/regulars';
 
 export const signupScheme = z
   .object({

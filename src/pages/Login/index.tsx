@@ -2,14 +2,15 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import LoginForm from '@components/LoginForm';
-import ICONS from '@constants/icons';
-import Routes from '@constants/routes';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { setCurrentUser } from '@store/slices/userSlice';
-import { IUser } from '@store/types';
-import getUserDataAndLogin from '@utils/getUserFromFirestore';
-import loginScheme from '@zod/loginScheme';
+
+import LoginForm from '@/components/LoginForm';
+import ICONS from '@/constants/icons';
+import ROUTES from '@/routes';
+import { setCurrentUser } from '@/store/slices/userSlice';
+import { IUser } from '@/store/types';
+import getUserDataAndLogin from '@/utils/getUserFromFirestore';
+import loginScheme from '@/zod/loginScheme';
 
 import { LoginContainer, TwitterLogo } from './styled';
 import { ILoginForm } from './types';
@@ -33,7 +34,7 @@ const Login = () => {
 
       if (token) {
         dispatch(setCurrentUser({ ...(userData as IUser), token }));
-        navigate(Routes.HOME);
+        navigate(ROUTES.HOME);
       } else {
         throw new Error('User not found');
       }

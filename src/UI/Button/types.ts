@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
-import ButtonVariants from '@constants/buttonVariants';
+
+import ButtonVariants from '@/constants/buttonVariants';
 
 export type IButtonProps = {
   icon?: string;

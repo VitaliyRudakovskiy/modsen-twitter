@@ -12,11 +12,6 @@ export const profileInputs: IProfileFormInput[] = [
     name: 'email',
   },
   {
-    placeholder: 'Current password',
-    type: 'password',
-    name: 'password',
-  },
-  {
     placeholder: 'Change birthday',
     type: 'text',
     name: 'birthday',
@@ -33,5 +28,4 @@ export const profileDefaultValues = {
   email: '',
   birthday: '',
   phone: '',
-  password: '',
 };

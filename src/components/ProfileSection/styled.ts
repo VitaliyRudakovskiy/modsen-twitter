@@ -1,9 +1,11 @@
-import { flexBetween, flexCenter } from '@theme/style/mixins';
 import styled from 'styled-components';
+
+import { flexBetween, flexCenter } from '@/theme/style/mixins';
 
 export const ProfileContainer = styled.div`
   flex: 1;
   padding: 0 ${({ theme }) => theme.gaps.s};
+  margin-bottom: ${({ theme }) => theme.gaps.xl2};
 `;
 
 export const ProfileHeader = styled.div`
@@ -39,6 +41,12 @@ export const ProfileInfo = styled.div`
 
 export const ProfileLeftInfo = styled.div`
   margin-top: -${({ theme }) => theme.gaps.xl7};
+`;
+
+export const ButtonsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 `;
 
 export const EditButton = styled.button`

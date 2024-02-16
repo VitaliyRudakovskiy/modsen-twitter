@@ -1,5 +1,6 @@
-import { EMAIL, PHONE_NUMBER } from '@constants/regulars';
 import { z } from 'zod';
+
+import { EMAIL, PHONE_NUMBER } from '@/constants/regulars';
 
 const loginScheme = z
   .object({

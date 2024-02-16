@@ -1,16 +1,17 @@
 import { useForm } from 'react-hook-form';
-import ButtonVariants from '@constants/buttonVariants';
-import Routes from '@constants/routes';
+import { zodResolver } from '@hookform/resolvers/zod';
+
+import ButtonVariants from '@/constants/buttonVariants';
 import {
   signupDefaultValues,
   signupInputs,
   signupSelects,
-} from '@constants/signupElements';
-import { zodResolver } from '@hookform/resolvers/zod';
-import Button from '@UI/Button';
-import Input from '@UI/Input';
-import Select from '@UI/Select';
-import { signupScheme } from '@zod/signupScheme';
+} from '@/constants/signupElements';
+import ROUTES from '@/routes';
+import Button from '@/UI/Button';
+import Input from '@/UI/Input';
+import Select from '@/UI/Select';
+import { signupScheme } from '@/zod/signupScheme';
 
 import {
   BirthText,
@@ -51,7 +52,7 @@ const SignupForm = ({ onSubmit, isButtonActive }: ISignupFormProps) => {
         ))}
       </SignupInputsContainer>
 
-      <StyledLink to={Routes.AUTH}>Use email</StyledLink>
+      <StyledLink to={ROUTES.AUTH}>Use email</StyledLink>
 
       <BirthTitle>Date of Birth</BirthTitle>
       <BirthText>

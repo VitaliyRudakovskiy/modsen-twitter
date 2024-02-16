@@ -57,5 +57,5 @@ export type ILoginForm = {
 };
 
 export type IProfileFormInput = Pick<IFormInput, 'placeholder' | 'type'> & {
-  name: 'name' | 'phone' | 'email' | 'password' | 'birthday';
+  name: 'name' | 'phone' | 'email' | 'birthday';
 };

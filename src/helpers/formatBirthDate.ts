@@ -1,4 +1,4 @@
-import { Months } from '@constants/dates';
+import { Months } from '@/constants/dates';
 
 const formatBirthDate = (day: number, month: string, year: number): string => {
   const monthIndex = Months.indexOf(month);

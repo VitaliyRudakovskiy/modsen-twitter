@@ -1,4 +1,4 @@
-import { ILoginForm } from '@constants/types';
+import { ILoginForm } from '@/constants/types';
 
 export type ILoginFormProps = {
   onSubmit: (form: ILoginForm) => void;

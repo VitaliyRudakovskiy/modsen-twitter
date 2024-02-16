@@ -1,15 +1,17 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import avatar from '@assets/avatar-big.png';
-import darkBackground from '@assets/dark.webp';
-import lightBackground from '@assets/test.webp';
-import ProfileModal from '@components/ProfileModal';
-import { selectTheme } from '@store/slices/themeSlice';
-import { selectUser } from '@store/slices/userSlice';
-import ThemeToggler from '@UI/ThemeToggler';
+
+import avatar from '@/assets/avatar-big.png';
+import darkBackground from '@/assets/dark.webp';
+import lightBackground from '@/assets/light.webp';
+import ProfileModal from '@/components/ProfileModal';
+import { selectTheme } from '@/store/slices/themeSlice';
+import { selectUser } from '@/store/slices/userSlice';
+import ThemeToggler from '@/UI/ThemeToggler';
 
 import {
   Background,
+  ButtonsContainer,
   EditButton,
   FollowContainer,
   FollowNumber,
@@ -67,7 +69,10 @@ const ProfileSection = () => {
             </FollowContainer>
           </ProfileLeftInfo>
 
-          <EditButton onClick={showModal}>Edit profile</EditButton>
+          <ButtonsContainer>
+            <EditButton onClick={showModal}>Edit profile</EditButton>
+            <EditButton>Change password</EditButton>
+          </ButtonsContainer>
         </ProfileInfo>
       </ProfileContainer>
 

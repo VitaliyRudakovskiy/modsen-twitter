@@ -1,10 +1,11 @@
 import { NavigateFunction } from 'react-router-dom';
-import Routes from '@constants/routes';
-import { auth, firestore, provider, signInWithPopup } from '@db/index';
-import { DispatchRTK } from '@store/index';
-import { setCurrentUser } from '@store/slices/userSlice';
-import { IUser } from '@store/types';
 import { addDoc, collection, getDocs, query, where } from 'firebase/firestore';
+
+import { auth, firestore, provider, signInWithPopup } from '@/db/index';
+import ROUTES from '@/routes';
+import { DispatchRTK } from '@/store/index';
+import { setCurrentUser } from '@/store/slices/userSlice';
+import { IUser } from '@/store/types';
 
 const signupWithGoogle = async (
   navigate: NavigateFunction,
@@ -32,11 +33,11 @@ const signupWithGoogle = async (
       await addDoc(userCollection, userData);
       const token = await user.getIdToken();
       dispatch(setCurrentUser({ ...(userData as IUser), token }));
-      navigate(Routes.HOME);
+      navigate(ROUTES.HOME);
     } else {
       const token = await user.getIdToken();
-      navigate(Routes.HOME);
       dispatch(setCurrentUser({ ...(userData as IUser), token }));
+      navigate(ROUTES.HOME);
     }
   } catch (error) {
     throw new Error(`An error occured while Google login: ${error}`);

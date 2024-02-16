@@ -1,4 +1,4 @@
-enum Routes {
+enum ROUTES {
   HOME = '/',
   PROFILE = '/profile',
   LOGIN = '/login',
@@ -9,4 +9,4 @@ enum Routes {
   NOT_FOUND = '*',
 }
 
-export default Routes;
+export default ROUTES;

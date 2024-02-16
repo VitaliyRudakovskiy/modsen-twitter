@@ -10,7 +10,7 @@ export const SidebarWrapper = styled.section`
 export const SidebarLinksContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.gaps.m};
+  gap: ${({ theme }) => theme.gaps.s};
   margin-bottom: ${({ theme }) => theme.gaps.xl2};
 `;
 
@@ -38,13 +38,14 @@ export const SidebarLinkImage = styled.img`
 
 export const TwitterIcon = styled.img`
   width: ${({ theme }) => theme.gaps.xl4};
-  margin-bottom: ${({ theme }) => theme.gaps.xl4};
+  margin-bottom: ${({ theme }) => theme.gaps.xl2};
 `;
 
 export const ProfileWrapper = styled.div`
   display: flex;
   align-items: center;
-  gap: ${({ theme }) => theme.gaps.l};
+  flex-wrap: wrap;
+  gap: ${({ theme }) => theme.gaps.xs};
   margin: ${({ theme }) => theme.gaps.xl} 0;
 `;
 
@@ -52,6 +53,7 @@ export const ProfileInfo = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.gaps.xs2};
+  font-size: ${({ theme }) => theme.fonts.fontSize.xs}px;
 `;
 
 export const Avatar = styled.img``;

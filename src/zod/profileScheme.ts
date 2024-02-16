@@ -1,5 +1,6 @@
-import { DATE, PHONE_NUMBER } from '@constants/regulars';
 import { z } from 'zod';
+
+import { DATE, PHONE_NUMBER } from '@/constants/regulars';
 
 const preprocessFunc = (prop: unknown) => {
   if (!prop || typeof prop !== 'string') return undefined;
@@ -39,7 +40,6 @@ const profileScheme = z.object({
   ),
   phone,
   birthday: date,
-  password: z.string(),
 });
 
 export default profileScheme;

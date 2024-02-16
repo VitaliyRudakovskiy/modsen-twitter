@@ -1,17 +1,29 @@
-import { Fragment } from 'react';
 import { createPortal } from 'react-dom';
 import { useForm } from 'react-hook-form';
-import ButtonVariants from '@constants/buttonVariants';
-import { profileDefaultValues, profileInputs } from '@constants/profileInputs';
+import { useDispatch, useSelector } from 'react-redux';
 import { zodResolver } from '@hookform/resolvers/zod';
-import Button from '@UI/Button';
-import Input from '@UI/Input';
-import profileScheme from '@zod/profileScheme';
+import {
+  collection,
+  getDocs,
+  query,
+  updateDoc,
+  where,
+} from 'firebase/firestore';
+
+import ButtonVariants from '@/constants/buttonVariants';
+import { profileDefaultValues, profileInputs } from '@/constants/profileInputs';
+import { firestore } from '@/db/index';
+import { selectUser, updateCurrentUser } from '@/store/slices/userSlice';
+import Button from '@/UI/Button';
+import Input from '@/UI/Input';
+import profileScheme from '@/zod/profileScheme';
 
 import {
   CloseButton,
   ErrorMessage,
+  InputLabel,
   InputsWrapper,
+  InputWrapper,
   ModalContainer,
   ModalForm,
   ModalOverlay,
@@ -31,14 +43,53 @@ const ProfileModal = ({ closeModal }: IProfileModal) => {
     mode: 'onChange',
   });
 
+  const { id } = useSelector(selectUser);
+  const dispatch = useDispatch();
+
+  const onSubmit = async (data: IProfileForm) => {
+    try {
+      const usersCollection = collection(firestore, 'users');
+      const userQuery = query(usersCollection, where('id', '==', id));
+      const userSnapshot = await getDocs(userQuery);
+
+      if (userSnapshot.empty) return;
+
+      const userRef = userSnapshot.docs[0].ref;
+      const fields: (keyof IProfileForm)[] = [
+        'name',
+        'email',
+        'phone',
+        'birthday',
+      ];
+
+      const updatedDataForUsers: Partial<IProfileForm> = {};
+
+      fields.forEach((field) => {
+        if (data[field]) {
+          updatedDataForUsers[field] = data[field];
+        }
+      });
+
+      await updateDoc(userRef, updatedDataForUsers);
+
+      dispatch(updateCurrentUser(updatedDataForUsers));
+    } catch (error) {
+      throw new Error(`An error occured while submitting form: ${error}`);
+    } finally {
+      reset();
+      closeModal();
+    }
+  };
+
   return createPortal(
     <ModalOverlay>
       <ModalContainer>
         <ModalTitle>Edit profile</ModalTitle>
-        <ModalForm>
+        <ModalForm onSubmit={handleSubmit(onSubmit)}>
           <InputsWrapper>
             {profileInputs.map(({ placeholder, name, type }) => (
-              <Fragment key={placeholder}>
+              <InputWrapper key={placeholder}>
+                <InputLabel>{name}</InputLabel>
                 <Input
                   {...register(name)}
                   placeholder={placeholder}
@@ -47,10 +98,14 @@ const ProfileModal = ({ closeModal }: IProfileModal) => {
                 {errors && errors[name] && (
                   <ErrorMessage>{errors[name]?.message}</ErrorMessage>
                 )}
-              </Fragment>
+              </InputWrapper>
             ))}
           </InputsWrapper>
-          <Button type='submit' variant={ButtonVariants.primary}>
+          <Button
+            type='submit'
+            variant={ButtonVariants.primary}
+            disabled={!isValid}
+          >
             Save changes
           </Button>
         </ModalForm>

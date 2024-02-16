@@ -1,12 +1,13 @@
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import TwitterBg from '@assets/back-twitter.webp';
-import ButtonVariants from '@constants/buttonVariants';
-import FooterLinks from '@constants/footerLinks';
-import ICONS from '@constants/icons';
-import Routes from '@constants/routes';
-import Button from '@UI/Button';
-import signupWithGoogle from '@utils/signupWithGoogle';
+
+import TwitterBg from '@/assets/back-twitter.webp';
+import ButtonVariants from '@/constants/buttonVariants';
+import FooterLinks from '@/constants/footerLinks';
+import ICONS from '@/constants/icons';
+import ROUTES from '@/routes';
+import Button from '@/UI/Button';
+import signupWithGoogle from '@/utils/signupWithGoogle';
 
 import {
   AuthContainer,
@@ -31,7 +32,7 @@ const Auth = () => {
   const dispatch = useDispatch();
 
   const handleSignUpClick = () => {
-    navigate(Routes.SIGNUP);
+    navigate(ROUTES.SIGNUP);
   };
 
   const handleGoogleSignUp = async () => {
@@ -72,7 +73,7 @@ const Auth = () => {
           </TermsText>
           <ExtraText>
             <Paragraph>Already have an account?</Paragraph>
-            <LoginLink to={Routes.LOGIN}> Log In</LoginLink>
+            <LoginLink to={ROUTES.LOGIN}> Log In</LoginLink>
           </ExtraText>
         </AuthContent>
       </MainContent>

@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectTheme, toggleTheme } from '@store/slices/themeSlice';
+
+import { selectTheme, toggleTheme } from '@/store/slices/themeSlice';
 
 import { Input, Label, Slider, ToggleContainer } from './styled';
 

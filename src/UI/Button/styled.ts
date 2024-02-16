@@ -1,6 +1,7 @@
-import ButtonVariants from '@constants/buttonVariants';
-import { flexCenter } from '@theme/style/mixins';
 import styled from 'styled-components';
+
+import ButtonVariants from '@/constants/buttonVariants';
+import { flexCenter } from '@/theme/style/mixins';
 
 import { defineBackgroundColor, defineColor, defineTextSize } from './helpers';
 import { IStyledButtonProps } from './types';

@@ -1,13 +1,14 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import AvatarInfo from '@assets/avatar.png';
-import ButtonVariants from '@constants/buttonVariants';
-import ICONS from '@constants/icons';
-import Routes from '@constants/routes';
-import SidebarLinks from '@constants/sidebarLinks';
-import { logout } from '@db/index';
-import { selectUser } from '@store/slices/userSlice';
-import Button from '@UI/Button';
+
+import AvatarInfo from '@/assets/avatar.png';
+import ButtonVariants from '@/constants/buttonVariants';
+import ICONS from '@/constants/icons';
+import SidebarLinks from '@/constants/sidebarLinks';
+import { logout } from '@/db/index';
+import ROUTES from '@/routes';
+import { selectUser, setCurrentUser } from '@/store/slices/userSlice';
+import Button from '@/UI/Button';
 
 import {
   Avatar,
@@ -25,10 +26,21 @@ import {
 const Sidebar = () => {
   const { name, email } = useSelector(selectUser);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleLogout = async () => {
     await logout();
-    navigate(Routes.AUTH);
+    dispatch(
+      setCurrentUser({
+        id: '',
+        email: '',
+        birthDate: '',
+        phone: '',
+        name: '',
+        token: null,
+      })
+    );
+    navigate(ROUTES.AUTH);
   };
 
   return (
@@ -46,7 +58,8 @@ const Sidebar = () => {
           </SidebarLink>
         ))}
       </SidebarLinksContainer>
-      <Button variant={ButtonVariants.primary} width='230px'>
+
+      <Button variant={ButtonVariants.primary} width='220px'>
         Tweet
       </Button>
 
@@ -60,7 +73,7 @@ const Sidebar = () => {
 
       <Button
         variant={ButtonVariants.logout}
-        width='230px'
+        width='220px'
         onClick={handleLogout}
       >
         Log out

@@ -6,8 +6,9 @@ import {
   useState,
 } from 'react';
 import { useSelector } from 'react-redux';
-import ICONS from '@constants/icons';
-import { selectTheme } from '@store/slices/themeSlice';
+
+import ICONS from '@/constants/icons';
+import { selectTheme } from '@/store/slices/themeSlice';
 
 import {
   ArrowImage,

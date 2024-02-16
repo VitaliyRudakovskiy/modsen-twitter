@@ -1,5 +1,6 @@
-import { firestore, register } from '@db/index';
 import { addDoc, collection } from 'firebase/firestore';
+
+import { firestore, register } from '@/db/index';
 
 const setUserToFirestore = async (
   name: string,

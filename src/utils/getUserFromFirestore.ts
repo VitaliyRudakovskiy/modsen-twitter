@@ -1,6 +1,7 @@
-import { firestore, signin } from '@db/index';
-import isPhoneNumber from '@helpers/isPhoneNumber';
 import { collection, getDocs, query, where } from 'firebase/firestore';
+
+import { firestore, signin } from '@/db/index';
+import isPhoneNumber from '@/helpers/isPhoneNumber';
 
 const getUserDataAndLogin = async (phoneOrEmail: string, password: string) => {
   const isPhone = isPhoneNumber(phoneOrEmail);

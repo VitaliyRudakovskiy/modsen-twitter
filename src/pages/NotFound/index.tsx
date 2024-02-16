@@ -1,4 +1,4 @@
-import Routes from '@constants/routes';
+import ROUTES from '@/routes';
 
 import {
   NotFoundContainer,
@@ -16,7 +16,7 @@ const NotFound = () => {
       <NotFoundText>
         The link you clicked may be broken or the page may have been removed.
       </NotFoundText>
-      <StyledLink to={Routes.HOME}>Back to Home Page</StyledLink>
+      <StyledLink to={ROUTES.HOME}>Back to Home Page</StyledLink>
     </NotFoundContainer>
   );
 };

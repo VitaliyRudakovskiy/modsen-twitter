@@ -1,5 +1,6 @@
-import { flexCenter } from '@theme/style/mixins';
 import styled from 'styled-components';
+
+import { flexCenter } from '@/theme/style/mixins';
 
 export const ErrorBoundaryWrapper = styled.div`
   ${flexCenter};

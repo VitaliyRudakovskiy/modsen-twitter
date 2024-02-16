@@ -1,5 +1,6 @@
 import { Component } from 'react';
-import errorImage from '@assets/error-image.webp';
+
+import errorImage from '@/assets/error-image.webp';
 
 import {
   Error,

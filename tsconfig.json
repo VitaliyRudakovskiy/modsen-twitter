@@ -23,20 +23,7 @@
 
     "baseUrl": "./src",
     "paths": {
-      "@assets/*": ["assets/*"],
-      "@components/*": ["components/*"],
-      "@constants/*": ["constants/*"],
-      "@db/*": ["db/*"],
-      "@helpers/*": ["helpers/*"],
-      "@icons/*": ["assets/icons/*"],
-      "@pages/*": ["pages/*"],
-      "@providers/*": ["providers/*"],
-      "@routes/*": ["routes/*"],
-      "@store/*": ["store/*"],
-      "@theme/*": ["theme/*"],
-      "@UI/*": ["UI/*"],
-      "@utils/*": ["utils/*"],
-      "@zod/*": ["zod/*"]
+      "@/*": ["*"]
     }
   },
   "include": ["src", ".eslintrc.cjs"],

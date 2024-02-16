@@ -24,8 +24,17 @@ module.exports = {
     'prettier',
     'simple-import-sort',
   ],
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.ts', '.tsx'],
+      },
+      typescript: {},
+    },
+  },
   rules: {
     'react/react-in-jsx-scope': 0,
+    'react/jsx-filename-extension': [1, { extensions: ['.ts', '.tsx'] }],
     'react/function-component-definition': [
       2,
       { namedComponents: 'arrow-function' },

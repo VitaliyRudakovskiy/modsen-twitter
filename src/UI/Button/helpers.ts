@@ -1,5 +1,6 @@
-import ButtonVariants from '@constants/buttonVariants';
 import { DefaultTheme } from 'styled-components';
+
+import ButtonVariants from '@/constants/buttonVariants';
 
 const lightBlue = ({ theme }: DefaultTheme) => theme.colors.blue100;
 const black = ({ theme }: DefaultTheme) => theme.colors.black300;

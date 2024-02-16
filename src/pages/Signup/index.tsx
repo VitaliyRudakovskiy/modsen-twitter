@@ -2,14 +2,15 @@ import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import SignupForm from '@components/SignupForm';
-import ICONS from '@constants/icons';
-import Routes from '@constants/routes';
-import formatBirthDate from '@helpers/formatBirthDate';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { setCurrentUser } from '@store/slices/userSlice';
-import setUserToFirestore from '@utils/setUserToFirestore';
-import { signupScheme } from '@zod/signupScheme';
+
+import SignupForm from '@/components/SignupForm';
+import ICONS from '@/constants/icons';
+import formatBirthDate from '@/helpers/formatBirthDate';
+import ROUTES from '@/routes';
+import { setCurrentUser } from '@/store/slices/userSlice';
+import setUserToFirestore from '@/utils/setUserToFirestore';
+import { signupScheme } from '@/zod/signupScheme';
 
 import { SignupContainer, TwitterLogo } from './styled';
 import { ISignupForm } from './types';
@@ -44,7 +45,7 @@ const Signup = () => {
         formattedBirthDate
       );
       dispatch(setCurrentUser({ ...userData }));
-      navigate(Routes.HOME);
+      navigate(ROUTES.HOME);
     } catch (error) {
       throw new Error(`An error occured while submitting form: ${error}`);
     } finally {

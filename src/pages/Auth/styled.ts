@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import { flexCenter } from '@theme/style/mixins';
 import styled from 'styled-components';
+
+import { flexCenter } from '@/theme/style/mixins';
 
 export const AuthContainer = styled.section`
   display: flex;

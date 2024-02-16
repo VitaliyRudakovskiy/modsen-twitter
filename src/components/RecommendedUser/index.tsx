@@ -1,6 +1,6 @@
-import Avatar from '@assets/avatar.png';
-import ButtonVariants from '@constants/buttonVariants';
-import Button from '@UI/Button';
+import Avatar from '@/assets/avatar.png';
+import ButtonVariants from '@/constants/buttonVariants';
+import Button from '@/UI/Button';
 
 import {
   MainContent,

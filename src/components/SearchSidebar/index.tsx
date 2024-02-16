@@ -1,6 +1,6 @@
-import Memes from '@assets/memes.webp';
-import RecommendedUser from '@components/RecommendedUser';
-import Search from '@UI/Search';
+import Memes from '@/assets/memes.webp';
+import RecommendedUser from '@/components/RecommendedUser';
+import Search from '@/UI/Search';
 
 import {
   MemesImage,
