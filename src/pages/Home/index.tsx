@@ -2,7 +2,7 @@ import Feed from '@/components/Feed';
 import SearchSidebar from '@/components/SearchSidebar';
 import Sidebar from '@/components/Sidebar';
 
-import { HomeWrapper } from './styled';
+import HomeWrapper from './styled';
 
 const Home = () => {
   return (

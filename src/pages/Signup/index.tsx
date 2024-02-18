@@ -9,11 +9,11 @@ import ICONS from '@/constants/icons';
 import formatBirthDate from '@/helpers/formatBirthDate';
 import ROUTES from '@/routes';
 import { setCurrentUser } from '@/store/slices/userSlice';
+import { ISignupForm } from '@/types';
 import setUserToFirestore from '@/utils/setUserToFirestore';
 import { signupScheme } from '@/zod/signupScheme';
 
 import { SignupContainer, TwitterLogo } from './styled';
-import { ISignupForm } from './types';
 
 const Signup = () => {
   const { reset } = useForm<ISignupForm>({

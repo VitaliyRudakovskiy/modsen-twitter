@@ -5,7 +5,6 @@ enum ROUTES {
   SIGNUP = '/signup',
   AUTH = '/auth',
   FEED = '/feed',
-  TWEET = 'tweet/:id',
   NOT_FOUND = '*',
 }
 

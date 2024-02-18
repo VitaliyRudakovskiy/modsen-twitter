@@ -1,12 +1,27 @@
+import { Dispatch, SetStateAction } from 'react';
 import { addDoc, collection } from 'firebase/firestore';
 
 import { firestore } from '@/db';
+import { IFile } from '@/types';
 
-const uploadTweet = async (text: string, name: string, email: string) => {
+import uploadFile from './uploadFile';
+
+const uploadTweet = async (
+  text: string,
+  name: string,
+  email: string,
+  image: IFile,
+  userId: string,
+  setLoadingState: Dispatch<SetStateAction<boolean>>
+) => {
+  setLoadingState(true);
+
+  const file = await uploadFile(image, userId);
   const tweet = {
     text,
     name,
     email,
+    file,
     createdAt: new Date(),
     likedBy: [],
   };
@@ -16,6 +31,8 @@ const uploadTweet = async (text: string, name: string, email: string) => {
     await addDoc(tweetsCollection, tweet);
   } catch (error) {
     throw new Error(`An error occured while uploading tweet: ${error}`);
+  } finally {
+    setLoadingState(false);
   }
 };
 

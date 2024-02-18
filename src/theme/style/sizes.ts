@@ -15,6 +15,7 @@ const SIZES: IString = {
   px1440: '1440px',
   vw90: '90dvw',
   vh100: '100dvh',
+  per95: '95%',
   full: '100%',
 };
 

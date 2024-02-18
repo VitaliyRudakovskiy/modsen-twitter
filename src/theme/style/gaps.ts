@@ -1,4 +1,4 @@
-import { IString } from '@constants/types';
+import { IString } from '@/constants/types';
 
 const GAPS: IString = {
   xs3: '2.5px',

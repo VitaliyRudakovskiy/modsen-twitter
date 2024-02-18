@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const HomeWrapper = styled.section`
+const HomeWrapper = styled.section`
   display: flex;
   justify-content: center;
   min-height: ${({ theme }) => theme.sizes.vh100};
@@ -10,3 +10,5 @@ export const HomeWrapper = styled.section`
   background: ${({ theme }) => theme.backgroundColor};
   color: ${({ theme }) => theme.textColor};
 `;
+
+export default HomeWrapper;

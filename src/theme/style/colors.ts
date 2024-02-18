@@ -1,4 +1,4 @@
-import { IString } from '@constants/types';
+import { IString } from '@/constants/types';
 
 const COLORS: IString = {
   white100: '#FFFFFF',
@@ -16,8 +16,6 @@ const COLORS: IString = {
   blue100: '#1DA1F2',
   blue200: '#1D9BF0',
   blue300: '#1E97E1',
-
-  pink: '#EF1C5C',
 
   orange: '#FF8F00',
 

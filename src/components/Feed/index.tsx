@@ -1,44 +1,76 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { collection, getDocs } from 'firebase/firestore';
+import {
+  collection,
+  onSnapshot,
+  orderBy,
+  query,
+  where,
+} from 'firebase/firestore';
 
+import birdImage from '@/assets/error-image.webp';
+import Textarea from '@/components/Textarea';
 import { firestore } from '@/db';
-import { selectUser } from '@/store/slices/userSlice';
+import { ITweetProps } from '@/types';
+import ThemeToggler from '@/UI/ThemeToggler';
 
-import { FeedContainer } from './styled';
+import {
+  FeedContainer,
+  Header,
+  HeaderTitle,
+  NoTweets,
+  NoTweetsImage,
+  TweetsContainer,
+} from './styled';
 import Tweet from './Tweet';
+import { IFeedProps } from './types';
 
-const Feed = () => {
-  const { email } = useSelector(selectUser);
-  const [tweets, setTweets] = useState([]);
+const Feed = ({ profileEmail }: IFeedProps) => {
+  const [tweets, setTweets] = useState<ITweetProps[]>([]);
 
   useEffect(() => {
-    const fetchTweets = async () => {
-      try {
-        const tweetCollection = collection(firestore, 'tweets');
-        const snapshot = await getDocs(tweetCollection);
-        const tweetData = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          tweetData: doc.data(),
-        }));
-        setTweets(tweetData);
-      } catch (error) {
-        throw new Error(`Error fetching tweets: ${error}`);
-      }
-    };
+    const tweetsCollection = collection(firestore, 'tweets');
+    let orderedQuery = query(tweetsCollection, orderBy('createdAt', 'desc'));
 
-    fetchTweets();
-  }, []);
+    if (profileEmail) {
+      orderedQuery = query(
+        tweetsCollection,
+        where('email', '==', profileEmail),
+        orderBy('createdAt', 'desc')
+      );
+    }
+
+    const unsubscribe = onSnapshot(orderedQuery, (snapshot) => {
+      const tweetData = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        tweetData: doc.data(),
+      })) as ITweetProps[];
+      setTweets(tweetData);
+    });
+
+    return () => unsubscribe();
+  }, [profileEmail]);
 
   return (
     <FeedContainer>
-      {tweets.length > 0 ? (
-        tweets.map(({ tweetData, id }) => (
-          <Tweet key={id} id={id} tweetData={tweetData} />
-        ))
-      ) : (
-        <div>No tweets!</div>
+      {!profileEmail && (
+        <Header>
+          <HeaderTitle>Home</HeaderTitle>
+          <ThemeToggler />
+        </Header>
       )}
+      <Textarea />
+      <TweetsContainer>
+        {tweets.length > 0 ? (
+          tweets.map(({ tweetData, id }) => (
+            <Tweet key={id} id={id} tweetData={tweetData} />
+          ))
+        ) : (
+          <NoTweets>
+            No Tweets yet. When they do, they&apos;ll show up here.
+            <NoTweetsImage src={birdImage} alt='bird image for no tweets' />
+          </NoTweets>
+        )}
+      </TweetsContainer>
     </FeedContainer>
   );
 };

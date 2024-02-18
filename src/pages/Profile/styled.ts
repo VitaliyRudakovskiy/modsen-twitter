@@ -12,3 +12,5 @@ export const ProfileWrapper = styled.section`
 `;
 
 export const MainSection = styled.div``;
+
+export const TweetsContainer = styled.div``;

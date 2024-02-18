@@ -9,11 +9,11 @@ import ICONS from '@/constants/icons';
 import ROUTES from '@/routes';
 import { setCurrentUser } from '@/store/slices/userSlice';
 import { IUser } from '@/store/types';
+import { ILoginForm } from '@/types';
 import getUserDataAndLogin from '@/utils/getUserFromFirestore';
 import loginScheme from '@/zod/loginScheme';
 
 import { LoginContainer, TwitterLogo } from './styled';
-import { ILoginForm } from './types';
 
 const Login = () => {
   const { reset } = useForm<ILoginForm>({

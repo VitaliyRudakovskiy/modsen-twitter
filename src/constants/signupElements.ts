@@ -1,5 +1,7 @@
+import { ISignupForm } from '@/types';
+
 import { Days, Months, Years } from './dates';
-import { IFormInput, ISignupForm, ISignupSelect } from './types';
+import { IFormInput, ISignupSelect } from './types';
 
 export const signupSelects: ISignupSelect[] = [
   {

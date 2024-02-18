@@ -37,23 +37,8 @@ export type IFormInput = {
   name: 'name' | 'phone' | 'email' | 'password';
 };
 
-export type ISignupForm = {
-  name: string;
-  phone: string;
-  email: string;
-  password: string;
-  month: string;
-  day: string;
-  year: string;
-};
-
 export type ILoginFormInput = Omit<IFormInput, 'name'> & {
   name: 'password' | 'phoneOrEmail';
-};
-
-export type ILoginForm = {
-  phoneOrEmail: string;
-  password: string;
 };
 
 export type IProfileFormInput = Pick<IFormInput, 'placeholder' | 'type'> & {

@@ -8,6 +8,7 @@ import {
   signupSelects,
 } from '@/constants/signupElements';
 import ROUTES from '@/routes';
+import { ISignupForm } from '@/types';
 import Button from '@/UI/Button';
 import Input from '@/UI/Input';
 import Select from '@/UI/Select';
@@ -24,7 +25,7 @@ import {
   SignupTitle,
   StyledLink,
 } from './styled';
-import { ISignupForm, ISignupFormProps } from './types';
+import { ISignupFormProps } from './types';
 
 const SignupForm = ({ onSubmit, isButtonActive }: ISignupFormProps) => {
   const {

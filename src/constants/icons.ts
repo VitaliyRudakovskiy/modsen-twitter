@@ -3,6 +3,7 @@ import ArrowDownDarkIcon from '@/assets/icons/arrow-down-dark.svg';
 import BookmarksIcon from '@/assets/icons/bookmarks.svg';
 import BookmarksDarkIcon from '@/assets/icons/bookmarks-dark.svg';
 import CommentsIcon from '@/assets/icons/comment.svg';
+import DeleteIcon from '@/assets/icons/delete.svg';
 import GifIcon from '@/assets/icons/gif.svg';
 import GoogleIcon from '@/assets/icons/google.png';
 import HashtagIcon from '@/assets/icons/hashtag.svg';
@@ -44,6 +45,7 @@ const ICONS: IString = {
   bookmarks: BookmarksIcon,
   bookmarksDark: BookmarksDarkIcon,
   comments: CommentsIcon,
+  delete: DeleteIcon,
   gif: GifIcon,
   google: GoogleIcon,
   hashtag: HashtagIcon,

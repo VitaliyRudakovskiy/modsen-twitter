@@ -1,4 +1,4 @@
-import { IFonts } from '@constants/types';
+import { IFonts } from '@/constants/types';
 
 const FONTS: IFonts = {
   fontFamily: {

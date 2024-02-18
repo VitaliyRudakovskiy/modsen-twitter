@@ -37,6 +37,7 @@ export const lightTheme: DefaultTheme = {
   notFoundGradient: `linear-gradient(180deg, ${COLORS.white100} 0%, ${COLORS.blue300} 100%);`,
   goBackLink: COLORS.white300,
   modalColor: COLORS.white300,
+  loaderColor: COLORS.blue300,
 };
 
 export const darkTheme: DefaultTheme = {
@@ -56,4 +57,5 @@ export const darkTheme: DefaultTheme = {
   notFoundGradient: `linear-gradient(180deg, ${COLORS.gray500} 0%, ${COLORS.black200} 100%);`,
   goBackLink: COLORS.blue200,
   modalColor: COLORS.black200,
+  loaderColor: COLORS.blue100,
 };

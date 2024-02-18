@@ -1,4 +1,6 @@
-import { ILoginForm, ILoginFormInput } from './types';
+import { ILoginForm } from '@/types';
+
+import { ILoginFormInput } from './types';
 
 export const loginInputs: ILoginFormInput[] = [
   {

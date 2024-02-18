@@ -24,11 +24,7 @@ export const SidebarLink = styled(NavLink)`
   text-decoration: none;
 
   &.active {
-    color: ${({ theme }) => theme.colors.pink};
-    & > svg > g > path {
-      color: ${({ theme }) => theme.colors.white100};
-      fill: ${({ theme }) => theme.colors.white100};
-    }
+    color: ${({ theme }) => theme.colors.blue300};
   }
 `;
 

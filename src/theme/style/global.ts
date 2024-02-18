@@ -1,6 +1,7 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 import FONTS from './fonts';
+import { flexCenter } from './mixins';
 
 const GlobalStyle = createGlobalStyle`
     * {
@@ -17,6 +18,11 @@ const GlobalStyle = createGlobalStyle`
     body {
         background-color: ${({ theme }) => theme.backgroundColor}
     }
+`;
+
+export const LoaderContainer = styled.div`
+  ${flexCenter};
+  min-height: 100dvh;
 `;
 
 export default GlobalStyle;

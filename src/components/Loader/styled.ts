@@ -12,10 +12,9 @@ const rotating = keyframes`
 `;
 
 export const LoaderContainer = styled.div`
-  ${flexCenter}
-  min-height: ${({ theme }) => theme.sizes.vh100};
-  background-color: ${({ theme }) => theme.backgroundColor};
-  color: ${({ theme }) => theme.textColor};
+  ${flexCenter};
+  background: transparent;
+  z-index: 10;
 `;
 
 export const Roller = styled.div`
@@ -36,7 +35,7 @@ export const Particle = styled.div`
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: #fff;
+    background: ${({ theme }) => theme.loaderColor};
     margin: -4px 0 0 -4px;
   }
 

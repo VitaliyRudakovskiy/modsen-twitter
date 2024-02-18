@@ -9,6 +9,7 @@ import ThemeProvider from '@/providers/ThemeProvider';
 import ROUTES from '@/routes';
 import privateRoutes from '@/routes/privateRoutes';
 import publicRoutes from '@/routes/publicRoutes';
+import { LoaderContainer } from '@/theme/style/global';
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -24,7 +25,11 @@ const App = () => {
   );
 
   if (isLoading) {
-    return <Loader />;
+    return (
+      <LoaderContainer>
+        <Loader />
+      </LoaderContainer>
+    );
   }
 
   return (
