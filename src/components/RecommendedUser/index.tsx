@@ -10,15 +10,16 @@ import {
   UserName,
   UserPhoto,
 } from './styled';
+import { IUserProps } from './types';
 
-const RecommendedUser = () => {
+const RecommendedUser = ({ name, email }: IUserProps) => {
   return (
     <UserContainer>
       <UserPhoto src={Avatar} alt='user avatar' />
       <MainContent>
         <UserInfo>
-          <UserName>Name test</UserName>
-          <UserEmail>@email123@test.ru</UserEmail>
+          <UserName>{name}</UserName>
+          <UserEmail>@{email.split('@')[0]}</UserEmail>
         </UserInfo>
         <Button variant={ButtonVariants.follow} width='90px'>
           Follow

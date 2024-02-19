@@ -79,7 +79,7 @@ const Sidebar = () => {
           <Avatar src={AvatarInfo} alt='Avatar' />
           <ProfileInfo>
             <ProfileName>{name}</ProfileName>
-            <ProfileEmail>@{email}</ProfileEmail>
+            <ProfileEmail>@{email.split('@')[0]}</ProfileEmail>
           </ProfileInfo>
         </ProfileWrapper>
 

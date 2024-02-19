@@ -11,17 +11,22 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
+import searchSlice from './slices/searchSlice';
 import themeSlice from './slices/themeSlice';
+import tweetsSlice from './slices/tweetsSlice';
 import userSlice from './slices/userSlice';
 
 const persistConfig = {
   key: 'root',
   storage,
+  blacklist: ['tweets', 'search'],
 };
 
 const rootReducer = combineReducers({
   theme: themeSlice,
+  tweets: tweetsSlice,
   user: userSlice,
+  search: searchSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

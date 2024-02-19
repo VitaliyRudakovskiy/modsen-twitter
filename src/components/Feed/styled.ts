@@ -31,3 +31,9 @@ export const NoTweets = styled.div`
 export const NoTweetsImage = styled.img`
   width: ${({ theme }) => theme.sizes.px150};
 `;
+
+export const LoaderContainer = styled.div`
+  ${flexCenter};
+  height: ${({ theme }) => theme.sizes.full};
+  width: ${({ theme }) => theme.sizes.full};
+`;

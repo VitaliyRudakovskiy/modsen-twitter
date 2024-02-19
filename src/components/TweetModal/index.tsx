@@ -2,6 +2,7 @@ import { SyntheticEvent } from 'react';
 import { createPortal } from 'react-dom';
 
 import Textarea from '@/components/Textarea';
+import { IModal } from '@/types';
 
 import {
   CloseButton,
@@ -9,9 +10,7 @@ import {
   ModalOverlay,
 } from '../ProfileModal/styled';
 
-import { ITweetModal } from './types';
-
-const TweetModal = ({ closeModal }: ITweetModal) => {
+const TweetModal = ({ closeModal }: IModal) => {
   const handleClose = (e: SyntheticEvent) => {
     if (e.target === e.currentTarget) {
       closeModal();

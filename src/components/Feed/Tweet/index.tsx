@@ -91,7 +91,7 @@ const Tweet = ({ tweetData, id }: ITweetProps) => {
       <MainContent>
         <Wrapper>
           <UserName>{name}</UserName>
-          <UserEmail>@{email}</UserEmail>
+          <UserEmail>@{email.split('@')[0]}</UserEmail>
           <Date>{convertTimestamp(createdAt)}</Date>
         </Wrapper>
         <Wrapper>{text}</Wrapper>

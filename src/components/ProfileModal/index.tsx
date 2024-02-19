@@ -15,6 +15,7 @@ import ButtonVariants from '@/constants/buttonVariants';
 import { profileDefaultValues, profileInputs } from '@/constants/profileInputs';
 import { firestore } from '@/db/index';
 import { selectUser, updateCurrentUser } from '@/store/slices/userSlice';
+import { IModal } from '@/types';
 import Button from '@/UI/Button';
 import Input from '@/UI/Input';
 import profileScheme from '@/zod/profileScheme';
@@ -30,9 +31,9 @@ import {
   ModalOverlay,
   ModalTitle,
 } from './styled';
-import { IProfileForm, IProfileModal } from './types';
+import { IProfileForm } from './types';
 
-const ProfileModal = ({ closeModal }: IProfileModal) => {
+const ProfileModal = ({ closeModal }: IModal) => {
   const {
     register,
     handleSubmit,

@@ -41,18 +41,18 @@ export const CloseButton = styled.button`
   }
 `;
 
+export const ModalForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  width: ${({ theme }) => theme.sizes.full};
+`;
+
 export const ModalTitle = styled.h2`
   font-family: ${({ theme }) => theme.fonts.fontFamily.robotoSerif};
   font-size: ${({ theme }) => theme.fonts.fontSize.xl2}px;
   color: ${({ theme }) => theme.textColor};
   margin-bottom: ${({ theme }) => theme.gaps.m};
   letter-spacing: 1.5px;
-`;
-
-export const ModalForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  width: ${({ theme }) => theme.sizes.full};
 `;
 
 export const InputsWrapper = styled.div``;

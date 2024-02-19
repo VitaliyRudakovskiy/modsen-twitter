@@ -18,7 +18,7 @@ export const RecommendationsTitle = styled.h2`
   font-size: ${({ theme }) => theme.fonts.fontSize.xl2}px;
 `;
 
-export const ShowMoreButton = styled.span`
+export const ShowMoreLessButton = styled.span`
   color: ${({ theme }) => theme.colors.blue300};
   cursor: pointer;
 `;
