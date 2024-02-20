@@ -5,7 +5,7 @@ import { auth, firestore, provider, signInWithPopup } from '@/db/index';
 import ROUTES from '@/routes';
 import { DispatchRTK } from '@/store/index';
 import { setCurrentUser } from '@/store/slices/userSlice';
-import { IUser } from '@/store/types';
+import { IUser } from '@/types';
 
 const signupWithGoogle = async (
   navigate: NavigateFunction,
