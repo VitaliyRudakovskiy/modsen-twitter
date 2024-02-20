@@ -3,6 +3,8 @@ import { ref, uploadBytes } from 'firebase/storage';
 import { storage } from '@/db';
 import { IFile } from '@/types';
 
+import compressFile from './compressFile';
+
 const uploadFile = async (file: IFile, id: string) => {
   if (!file) return null;
 
@@ -11,8 +13,10 @@ const uploadFile = async (file: IFile, id: string) => {
   const imageName = `images/${imageId}.jpg`;
   const fileRef = ref(storage, imageName);
 
+  const compressedImage = await compressFile(file);
+
   try {
-    await uploadBytes(fileRef, file);
+    await uploadBytes(fileRef, compressedImage);
   } catch (error) {
     throw new Error(`An error occured while uploading file: ${error}`);
   }

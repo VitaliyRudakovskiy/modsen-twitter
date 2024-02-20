@@ -57,12 +57,7 @@ const ProfileModal = ({ closeModal }: IModal) => {
       if (userSnapshot.empty) return;
 
       const userRef = userSnapshot.docs[0].ref;
-      const fields: (keyof IProfileForm)[] = [
-        'name',
-        'email',
-        'phone',
-        'birthday',
-      ];
+      const fields: (keyof IProfileForm)[] = ['name', 'phone', 'birthDate'];
 
       const updatedDataForUsers: Partial<IProfileForm> = {};
 
@@ -73,7 +68,6 @@ const ProfileModal = ({ closeModal }: IModal) => {
       });
 
       await updateDoc(userRef, updatedDataForUsers);
-
       dispatch(updateCurrentUser(updatedDataForUsers));
     } catch (error) {
       throw new Error(`An error occured while submitting form: ${error}`);
@@ -93,7 +87,7 @@ const ProfileModal = ({ closeModal }: IModal) => {
     <ModalOverlay onClick={handleClose}>
       <ModalContainer>
         <ModalTitle>Edit profile</ModalTitle>
-        <ModalForm onSubmit={handleSubmit(onSubmit)}>
+        <ModalForm autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
           <InputsWrapper>
             {profileInputs.map(({ placeholder, name, type }) => (
               <InputWrapper key={placeholder}>
@@ -102,6 +96,7 @@ const ProfileModal = ({ closeModal }: IModal) => {
                   {...register(name)}
                   placeholder={placeholder}
                   type={type}
+                  autoComplete={false}
                 />
                 {errors && errors[name] && (
                   <ErrorMessage>{errors[name]?.message}</ErrorMessage>

@@ -42,7 +42,7 @@ export type ILoginFormInput = Omit<IFormInput, 'name'> & {
 };
 
 export type IProfileFormInput = Pick<IFormInput, 'placeholder' | 'type'> & {
-  name: 'name' | 'phone' | 'email' | 'birthday';
+  name: 'name' | 'phone' | 'birthDate';
 };
 
 export type IPasswordFormInput = Pick<IFormInput, 'placeholder' | 'type'> & {

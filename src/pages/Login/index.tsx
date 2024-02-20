@@ -8,8 +8,7 @@ import LoginForm from '@/components/LoginForm';
 import ICONS from '@/constants/icons';
 import ROUTES from '@/routes';
 import { setCurrentUser } from '@/store/slices/userSlice';
-import { IUser } from '@/store/types';
-import { ILoginForm } from '@/types';
+import { ILoginForm, IUser } from '@/types';
 import getUserDataAndLogin from '@/utils/getUserFromFirestore';
 import loginScheme from '@/zod/loginScheme';
 

@@ -38,8 +38,9 @@ const profileScheme = z.object({
     (emailProp) => preprocessFunc(emailProp),
     z.string().email().optional()
   ),
+  password: z.string().optional(),
   phone,
-  birthday: date,
+  birthDate: date,
 });
 
 export default profileScheme;

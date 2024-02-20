@@ -1,13 +1,21 @@
-import { SyntheticEvent } from 'react';
+import { SyntheticEvent, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import {
+  EmailAuthProvider,
+  reauthenticateWithCredential,
+  updatePassword,
+} from 'firebase/auth';
 
+import ButtonVariants from '@/constants/buttonVariants';
 import {
   passwordDefaultValues,
   passwordInputs,
 } from '@/constants/passwordInputs';
+import { auth } from '@/db';
 import { IModal } from '@/types';
+import Button from '@/UI/Button';
 import Input from '@/UI/Input';
 import passwordScheme from '@/zod/passwordScheme';
 
@@ -17,17 +25,15 @@ import {
   ModalOverlay,
 } from '../ProfileModal/styled';
 
-import { IPasswordForm } from './types';
 import {
   ErrorMessage,
   InputLabel,
-  InputWrapper,
   InputsWrapper,
+  InputWrapper,
   ModalForm,
   ModalTitle,
 } from './styled';
-import Button from '@/UI/Button';
-import ButtonVariants from '@/constants/buttonVariants';
+import { IPasswordForm } from './types';
 
 const PasswordModal = ({ closeModal }: IModal) => {
   const {
@@ -41,6 +47,8 @@ const PasswordModal = ({ closeModal }: IModal) => {
     mode: 'onChange',
   });
 
+  const [loading, setLoading] = useState<boolean>(false);
+
   const handleClose = (e: SyntheticEvent) => {
     if (e.target === e.currentTarget) {
       closeModal();
@@ -48,7 +56,31 @@ const PasswordModal = ({ closeModal }: IModal) => {
   };
 
   const onSubmit = async (data: IPasswordForm) => {
-    console.log(data);
+    setLoading(true);
+    const authUser = auth.currentUser;
+
+    if (!authUser) return;
+
+    try {
+      if (data.email !== authUser.email) {
+        throw new Error('The entered email does not match your current email');
+      }
+
+      const credential = EmailAuthProvider.credential(
+        authUser.email,
+        data['old password']
+      );
+
+      await reauthenticateWithCredential(authUser, credential);
+
+      await updatePassword(authUser, data['new password']);
+    } catch (error) {
+      throw new Error(`An error occured while changing password: ${error}`);
+    } finally {
+      setLoading(false);
+      reset();
+      closeModal();
+    }
   };
 
   return createPortal(
@@ -75,9 +107,9 @@ const PasswordModal = ({ closeModal }: IModal) => {
           <Button
             type='submit'
             variant={ButtonVariants.primary}
-            disabled={!isValid}
+            disabled={!isValid || loading}
           >
-            Save changes
+            {loading ? 'Loading...' : 'Save password'}
           </Button>
         </ModalForm>
 
