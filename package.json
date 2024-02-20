@@ -19,7 +19,6 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx,html}": "yarn format",
     "src/**/*.{ts,tsx}": "yarn lint"
   },
   "dependencies": {
