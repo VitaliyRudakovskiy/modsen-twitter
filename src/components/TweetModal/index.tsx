@@ -18,10 +18,16 @@ const TweetModal = ({ closeModal }: IModal) => {
   };
 
   return createPortal(
-    <ModalOverlay onClick={handleClose}>
+    <ModalOverlay onClick={handleClose} data-cy='tweet-modal'>
       <ModalContainer>
         <Textarea />
-        <CloseButton onClick={closeModal}>&times;</CloseButton>
+        <CloseButton
+          onClick={closeModal}
+          data-cy='tweet-modal-close-button'
+          data-testid='close-button'
+        >
+          &times;
+        </CloseButton>
       </ModalContainer>
     </ModalOverlay>,
 

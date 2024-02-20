@@ -9,6 +9,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
+    'plugin:cypress/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -61,6 +62,7 @@ module.exports = {
     'react/display-name': 'off',
     'react/jsx-props-no-spreading': 'off',
     'react-hooks/rules-of-hooks': 'off',
+    'import/no-extraneous-dependencies': 'off',
     'no-new': 'off',
   },
 };

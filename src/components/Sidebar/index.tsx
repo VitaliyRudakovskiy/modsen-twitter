@@ -52,7 +52,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <SidebarWrapper>
+      <SidebarWrapper data-cy='sidebar'>
         <TwitterIcon src={ICONS.twitter} alt='twitter' />
         <SidebarLinksContainer>
           {SidebarLinks.map(({ title, path, icon }) => (
@@ -60,6 +60,7 @@ const Sidebar = () => {
               className={({ isActive }) => (isActive ? 'active' : '')}
               key={path}
               to={path}
+              data-cy={`sidebar-${title}`}
             >
               <SidebarLinkImage src={icon} alt='sidebar link icon' />
               {title}
@@ -68,6 +69,7 @@ const Sidebar = () => {
         </SidebarLinksContainer>
 
         <Button
+          dataCy='sidebar-tweet-button'
           variant={ButtonVariants.primary}
           width='220px'
           onClick={showModal}
@@ -75,7 +77,7 @@ const Sidebar = () => {
           Tweet
         </Button>
 
-        <ProfileWrapper>
+        <ProfileWrapper data-cy='sidebar-profile-wrapper'>
           <Avatar src={AvatarInfo} alt='Avatar' />
           <ProfileInfo>
             <ProfileName>{name}</ProfileName>
@@ -84,6 +86,7 @@ const Sidebar = () => {
         </ProfileWrapper>
 
         <Button
+          dataCy='sidebar-logout-button'
           variant={ButtonVariants.logout}
           width='220px'
           onClick={handleLogout}

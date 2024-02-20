@@ -74,7 +74,7 @@ const Feed = ({ profileEmail }: IFeedProps) => {
   }, [profileEmail, dispatch, searchInput, location]);
 
   return (
-    <FeedContainer>
+    <FeedContainer data-cy='feed'>
       {isLoading ? (
         <LoaderContainer>
           <Loader />

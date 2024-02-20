@@ -54,7 +54,7 @@ const Textarea = () => {
   };
 
   return (
-    <TextareaWrapper>
+    <TextareaWrapper data-testid='textarea'>
       {isLoading && (
         <LoaderContainer>
           <Loader />
@@ -79,7 +79,7 @@ const Textarea = () => {
           {fileName && <FileName>{fileName}</FileName>}
         </UploadFileLabel>
 
-        <ButtonWrapper>
+        <ButtonWrapper data-testid='tweet-button'>
           <Button
             variant={ButtonVariants.primary}
             disabled={!textValue || isLoading}

@@ -9,6 +9,7 @@ const Button = ({
   type = 'button',
   width = '100%',
   onClick,
+  dataCy = '',
 }: IButtonProps) => {
   return (
     <StyledButton
@@ -17,6 +18,7 @@ const Button = ({
       disabled={disabled}
       type={type}
       onClick={onClick}
+      data-cy={dataCy}
     >
       {icon && <ButtonIcon src={icon} alt='button icon' />}
       {children}

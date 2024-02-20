@@ -56,7 +56,11 @@ const Signup = () => {
 
   return (
     <SignupContainer>
-      <TwitterLogo src={ICONS.twitter} alt='twitter-icon' />
+      <TwitterLogo
+        src={ICONS.twitter}
+        alt='twitter-icon'
+        data-cy='signup-image'
+      />
       <SignupForm onSubmit={onSubmit} isButtonActive={isButtonActive} />
     </SignupContainer>
   );

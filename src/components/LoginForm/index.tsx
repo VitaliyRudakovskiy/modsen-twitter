@@ -30,12 +30,17 @@ const LoginForm = ({ onSubmit, isButtonActive }: ILoginFormProps) => {
   });
 
   return (
-    <LoginFormContainer onSubmit={handleSubmit(onSubmit)}>
+    <LoginFormContainer onSubmit={handleSubmit(onSubmit)} data-cy='login-form'>
       <LoginTitle>Log In to Twitter</LoginTitle>
       <LoginInputsContainer>
         {loginInputs.map(({ placeholder, type, name }) => (
           <Fragment key={placeholder}>
-            <Input {...register(name)} placeholder={placeholder} type={type} />
+            <Input
+              {...register(name)}
+              placeholder={placeholder}
+              type={type}
+              data-cy={`login-form-${name}`}
+            />
             {errors && errors[name] && (
               <ErrorMessage>{errors[name]?.message}</ErrorMessage>
             )}
@@ -43,13 +48,16 @@ const LoginForm = ({ onSubmit, isButtonActive }: ILoginFormProps) => {
         ))}
       </LoginInputsContainer>
       <Button
+        dataCy='login-submit-button'
         variant={ButtonVariants.primary}
         type='submit'
         disabled={!isButtonActive || !isValid}
       >
         Log In
       </Button>
-      <SignupLink to={ROUTES.SIGNUP}>Sign Up to Twitter</SignupLink>
+      <SignupLink data-cy='signup-twitter-link' to={ROUTES.SIGNUP}>
+        Sign Up to Twitter
+      </SignupLink>
     </LoginFormContainer>
   );
 };

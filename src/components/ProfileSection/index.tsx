@@ -58,18 +58,24 @@ const ProfileSection = () => {
           <ThemeToggler />
         </ProfileHeader>
 
-        <Background src={imageUrl} alt='background' />
+        <Background src={imageUrl} alt='background' data-cy='profile-image' />
 
         <ProfileInfo>
           <ProfileLeftInfo>
-            <ProfileLogo src={avatar} alt='user avatar' />
-            <ProfileName>{name}</ProfileName>
-            <ProfileEmail>@{email.split('@')[0]}</ProfileEmail>
-            <ProfileDescription>
+            <ProfileLogo
+              src={avatar}
+              alt='user avatar'
+              data-cy='profile-avatar'
+            />
+            <ProfileName data-cy='profile-name'>{name}</ProfileName>
+            <ProfileEmail data-cy='profile-email'>
+              @{email.split('@')[0]}
+            </ProfileEmail>
+            <ProfileDescription data-cy='profile-description'>
               UX&UI designer at @abutechuz
             </ProfileDescription>
 
-            <FollowContainer>
+            <FollowContainer data-cy='profile-follow-container'>
               <FollowNumber>61</FollowNumber>
               <FollowText>Following</FollowText>
               <FollowNumber>47</FollowNumber>
@@ -78,8 +84,15 @@ const ProfileSection = () => {
           </ProfileLeftInfo>
 
           <ButtonsContainer>
-            <EditButton onClick={showModal}>Edit profile</EditButton>
-            <EditButton onClick={showPasswordModal}>Change password</EditButton>
+            <EditButton data-cy='profile-edit-button' onClick={showModal}>
+              Edit profile
+            </EditButton>
+            <EditButton
+              data-cy='profile-edit-password'
+              onClick={showPasswordModal}
+            >
+              Change password
+            </EditButton>
           </ButtonsContainer>
         </ProfileInfo>
       </ProfileContainer>

@@ -47,7 +47,11 @@ const Login = () => {
 
   return (
     <LoginContainer>
-      <TwitterLogo src={ICONS.twitter} alt='twitter-icon' />
+      <TwitterLogo
+        src={ICONS.twitter}
+        alt='twitter-icon'
+        data-cy='login-image'
+      />
       <LoginForm onSubmit={onSubmit} isButtonActive={isButtonActive} />
     </LoginContainer>
   );

@@ -10,6 +10,7 @@ export type IButtonProps = {
   type?: 'button' | 'submit';
   width?: string;
   onClick?: () => void;
+  dataCy?: string;
 };
 
 export type IStyledButtonProps = {

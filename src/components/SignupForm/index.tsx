@@ -39,13 +39,21 @@ const SignupForm = ({ onSubmit, isButtonActive }: ISignupFormProps) => {
   });
 
   return (
-    <SignupFormContainer onSubmit={handleSubmit(onSubmit)}>
+    <SignupFormContainer
+      onSubmit={handleSubmit(onSubmit)}
+      data-cy='signup-form'
+    >
       <SignupTitle>Create an account</SignupTitle>
 
       <SignupInputsContainer>
         {signupInputs.map(({ placeholder, type, name }) => (
           <InputContainer key={placeholder}>
-            <Input {...register(name)} placeholder={placeholder} type={type} />
+            <Input
+              {...register(name)}
+              placeholder={placeholder}
+              type={type}
+              data-cy={`signup-form-${name}`}
+            />
             {errors && errors[name] && (
               <ErrorMessage>{errors[name]?.message}</ErrorMessage>
             )}
@@ -53,7 +61,9 @@ const SignupForm = ({ onSubmit, isButtonActive }: ISignupFormProps) => {
         ))}
       </SignupInputsContainer>
 
-      <StyledLink to={ROUTES.AUTH}>Use email</StyledLink>
+      <StyledLink data-cy='signup-email-link' to={ROUTES.AUTH}>
+        Use email
+      </StyledLink>
 
       <BirthTitle>Date of Birth</BirthTitle>
       <BirthText>
@@ -71,10 +81,12 @@ const SignupForm = ({ onSubmit, isButtonActive }: ISignupFormProps) => {
             options={options}
             placeholder={placeholder}
             width={width}
+            data-cy={`signup-form-${name}`}
           />
         ))}
       </SelectsContainer>
       <Button
+        dataCy='signup-submit-button'
         variant={ButtonVariants.primary}
         type='submit'
         disabled={!isButtonActive || !isValid}

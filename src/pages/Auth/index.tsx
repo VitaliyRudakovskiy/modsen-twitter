@@ -46,12 +46,16 @@ const Auth = () => {
   return (
     <AuthContainer>
       <MainContent>
-        <TwitterImage src={TwitterBg} alt='Background twitter' />
+        <TwitterImage
+          src={TwitterBg}
+          alt='Background twitter'
+          data-cy='auth-image'
+        />
         <AuthContent>
           <TwitterLogo src={ICONS.twitter} />
           <Title>Happening now</Title>
           <Subtitle>Join Twitter today</Subtitle>
-          <ButtonsContainer>
+          <ButtonsContainer data-cy='auth-signup-buttons'>
             <Button
               variant={ButtonVariants.secondary}
               icon={ICONS.google}
@@ -73,11 +77,13 @@ const Auth = () => {
           </TermsText>
           <ExtraText>
             <Paragraph>Already have an account?</Paragraph>
-            <LoginLink to={ROUTES.LOGIN}> Log In</LoginLink>
+            <LoginLink data-cy='auth-login-link' to={ROUTES.LOGIN}>
+              Log In
+            </LoginLink>
           </ExtraText>
         </AuthContent>
       </MainContent>
-      <FooterLinksContainer>
+      <FooterLinksContainer data-cy='auth-footer-links'>
         {FooterLinks.map(({ id, text, to }) => (
           <FooterLink key={id} to={to}>
             {text}

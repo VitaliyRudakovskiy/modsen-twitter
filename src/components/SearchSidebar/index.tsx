@@ -79,7 +79,7 @@ const SearchSidebar = () => {
   };
 
   return (
-    <SearchSidebarContainer>
+    <SearchSidebarContainer data-cy='searchbar'>
       <Search value={inputValue} handleChange={handleInputChange} />
       <MemesImage src={Memes} alt='Memes from twitter' />
       <RecommendationsTitle>
