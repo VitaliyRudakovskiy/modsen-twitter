@@ -12,6 +12,14 @@ export const SignupFormContainer = styled.form`
 export const SignupTitle = styled.h2`
   font-size: ${({ theme }) => theme.fonts.fontSize.xl2}px;
   font-weight: ${({ theme }) => theme.fonts.fontWeight.l};
+
+  @media (max-width: ${({ theme }) => theme.sizes.px728}) {
+    text-align: center;
+  }
+
+  @media (max-width: ${({ theme }) => theme.sizes.px400}) {
+    font-weight: ${({ theme }) => theme.fonts.fontWeight.m};
+  }
 `;
 
 export const SignupInputsContainer = styled.div`
@@ -40,14 +48,26 @@ export const BirthTitle = styled.h3`
   font-family: ${({ theme }) => theme.fonts.fontFamily.robotoSerif};
   font-size: ${({ theme }) => theme.fonts.fontSize.xl}px;
   font-weight: ${({ theme }) => theme.fonts.fontWeight.l};
+
+  @media (max-width: ${({ theme }) => theme.sizes.px728}) {
+    text-align: center;
+  }
 `;
 
 export const BirthText = styled.p`
   font-size: ${({ theme }) => theme.fonts.fontSize.l}px;
   color: ${({ theme }) => theme.profileEmailColor};
+
+  @media (max-width: ${({ theme }) => theme.sizes.px728}) {
+    text-align: center;
+  }
 `;
 
 export const SelectsContainer = styled.div`
   display: flex;
   gap: ${({ theme }) => theme.gaps.l};
+
+  @media (max-width: ${({ theme }) => theme.sizes.px728}) {
+    flex-direction: column;
+  }
 `;
