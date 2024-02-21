@@ -27,7 +27,7 @@ export type ISidebarLink = {
 export type ISignupSelect = {
   options: string[] | number[];
   placeholder: string;
-  width: string;
+  width?: string;
   name: 'month' | 'day' | 'year';
 };
 

@@ -7,19 +7,16 @@ export const signupSelects: ISignupSelect[] = [
   {
     options: Months,
     placeholder: 'Month',
-    width: '50%',
     name: 'month',
   },
   {
     options: Days,
     placeholder: 'Day',
-    width: '30%',
     name: 'day',
   },
   {
     options: Years,
     placeholder: 'Year',
-    width: '20%',
     name: 'year',
   },
 ];

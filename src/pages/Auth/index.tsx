@@ -78,6 +78,7 @@ const Auth = () => {
           <ExtraText>
             <Paragraph>Already have an account?</Paragraph>
             <LoginLink data-cy='auth-login-link' to={ROUTES.LOGIN}>
+              {' '}
               Log In
             </LoginLink>
           </ExtraText>
