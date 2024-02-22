@@ -13,10 +13,26 @@ export const MainContent = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
+  width: ${({ theme }) => theme.sizes.full};
   flex: 1;
 `;
 
-export const Avatar = styled.img``;
+export const Avatar = styled.img`
+  @media (max-width: ${({ theme }) => theme.sizes.px850}) {
+    position: absolute;
+  }
+`;
+
+export const TweetFile = styled.img`
+  width: ${({ theme }) => theme.sizes.full};
+  max-height: ${({ theme }) => theme.sizes.px400};
+  border-radius: ${({ theme }) => theme.gaps.s};
+  object-fit: contain;
+
+  @media (max-width: ${({ theme }) => theme.sizes.px850}) {
+    max-height: ${({ theme }) => theme.sizes.full};
+  }
+`;
 
 export const Wrapper = styled.div`
   display: flex;
@@ -25,9 +41,32 @@ export const Wrapper = styled.div`
   gap: ${({ theme }) => theme.gaps.xs};
   max-width: ${({ theme }) => theme.sizes.per95};
   margin-bottom: ${({ theme }) => theme.gaps.s};
+  flex-wrap: wrap;
 
   &:nth-child(4) {
     margin-bottom: 0;
+  }
+
+  @media (max-width: ${({ theme }) => theme.sizes.px850}) {
+    max-width: ${({ theme }) => theme.sizes.full};
+
+    &:nth-child(1) {
+      align-items: flex-start;
+      padding: 5px 30px 0 60px;
+    }
+  }
+`;
+
+export const MobileWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: ${({ theme }) => theme.gaps.xs};
+
+  @media (max-width: ${({ theme }) => theme.sizes.px850}) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: ${({ theme }) => theme.gaps.xs2};
   }
 `;
 
@@ -60,10 +99,3 @@ export const LikesContainer = styled.div`
 `;
 
 export const LikeImage = styled.img``;
-
-export const TweetFile = styled.img`
-  width: ${({ theme }) => theme.sizes.full};
-  max-height: ${({ theme }) => theme.sizes.px400};
-  border-radius: ${({ theme }) => theme.gaps.s};
-  object-fit: contain;
-`;

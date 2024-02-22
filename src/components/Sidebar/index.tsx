@@ -11,6 +11,7 @@ import ROUTES from '@/routes';
 import { selectUser, setCurrentUser } from '@/store/slices/userSlice';
 import Button from '@/UI/Button';
 
+import Burger from '../Burger';
 import TweetModal from '../TweetModal';
 
 import {
@@ -29,6 +30,8 @@ import {
 const Sidebar = () => {
   const { name, email } = useSelector(selectUser);
   const [isTweetModalOpen, setIsTweetModalOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -50,9 +53,13 @@ const Sidebar = () => {
   const closeModal = () => setIsTweetModalOpen(false);
   const showModal = () => setIsTweetModalOpen(true);
 
+  const toggleSidebar = () => {
+    setIsSidebarOpen((prevState) => !prevState);
+  };
+
   return (
     <>
-      <SidebarWrapper data-cy='sidebar'>
+      <SidebarWrapper $isOpen={isSidebarOpen} data-cy='sidebar'>
         <TwitterIcon src={ICONS.twitter} alt='twitter' />
         <SidebarLinksContainer>
           {SidebarLinks.map(({ title, path, icon }) => (
@@ -71,7 +78,6 @@ const Sidebar = () => {
         <Button
           dataCy='sidebar-tweet-button'
           variant={ButtonVariants.primary}
-          width='220px'
           onClick={showModal}
         >
           Tweet
@@ -88,12 +94,13 @@ const Sidebar = () => {
         <Button
           dataCy='sidebar-logout-button'
           variant={ButtonVariants.logout}
-          width='220px'
           onClick={handleLogout}
         >
           Log out
         </Button>
       </SidebarWrapper>
+
+      <Burger isOpen={isSidebarOpen} onClick={toggleSidebar} />
 
       {isTweetModalOpen && <TweetModal closeModal={closeModal} />}
     </>
