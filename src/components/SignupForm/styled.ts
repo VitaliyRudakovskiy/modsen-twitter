@@ -7,6 +7,10 @@ export const SignupFormContainer = styled.form`
   gap: ${({ theme }) => theme.gaps.xl};
   max-width: ${({ theme }) => theme.sizes.px850};
   padding: 0 ${({ theme }) => theme.gaps.xl6};
+
+  @media (max-width: ${({ theme }) => theme.sizes.px728}) {
+    padding: 0 ${({ theme }) => theme.gaps.l};
+  }
 `;
 
 export const SignupTitle = styled.h2`

@@ -6,6 +6,10 @@ export const SearchSidebarContainer = styled.section`
   gap: ${({ theme }) => theme.gaps.l};
   max-width: ${({ theme }) => theme.sizes.px400};
   padding: 0 ${({ theme }) => theme.gaps.s};
+
+  @media (max-width: ${({ theme }) => theme.sizes.px1230}) {
+    display: none;
+  }
 `;
 
 export const MemesImage = styled.img`

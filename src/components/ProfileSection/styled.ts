@@ -11,6 +11,10 @@ export const ProfileContainer = styled.div`
 export const ProfileHeader = styled.div`
   ${flexBetween};
   padding: ${({ theme }) => theme.gaps.s};
+
+  @media (max-width: ${({ theme }) => theme.sizes.px850}) {
+    padding-left: ${({ theme }) => theme.gaps.xl6};
+  }
 `;
 
 export const HeaderWrapper = styled.div`

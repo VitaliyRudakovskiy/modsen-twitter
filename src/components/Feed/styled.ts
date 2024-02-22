@@ -11,6 +11,10 @@ export const Header = styled.div`
   ${flexBetween};
   width: ${({ theme }) => theme.sizes.full};
   padding: ${({ theme }) => theme.gaps.m};
+
+  @media (max-width: ${({ theme }) => theme.sizes.px850}) {
+    padding: 0 ${({ theme }) => theme.gaps.m} 0 ${({ theme }) => theme.gaps.xl7};
+  }
 `;
 
 export const HeaderTitle = styled.h2`

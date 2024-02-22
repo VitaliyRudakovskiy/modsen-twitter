@@ -6,6 +6,7 @@ const SIZES: IString = {
   px60: '60px',
   px90: '90px',
   px150: '150px',
+  px200: '200px',
   px230: '230px',
   px300: '300px',
   px400: '400px',

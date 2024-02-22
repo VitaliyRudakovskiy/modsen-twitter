@@ -26,6 +26,7 @@ import {
   LikeImage,
   LikesContainer,
   MainContent,
+  MobileWrapper,
   TweetContainer,
   TweetFile,
   UserEmail,
@@ -90,8 +91,10 @@ const Tweet = ({ tweetData, id }: ITweetProps) => {
       <Avatar src={avatar} alt='user photo' />
       <MainContent>
         <Wrapper>
-          <UserName>{name}</UserName>
-          <UserEmail>@{email.split('@')[0]}</UserEmail>
+          <MobileWrapper>
+            <UserName>{name}</UserName>
+            <UserEmail>@{email.split('@')[0]}</UserEmail>
+          </MobileWrapper>
           <Date>{convertTimestamp(createdAt)}</Date>
         </Wrapper>
         <Wrapper>{text}</Wrapper>

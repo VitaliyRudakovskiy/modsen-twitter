@@ -9,6 +9,10 @@ export const ProfileWrapper = styled.section`
   margin: 0 auto;
   background: ${({ theme }) => theme.backgroundColor};
   color: ${({ theme }) => theme.textColor};
+
+  @media (max-width: ${({ theme }) => theme.sizes.px850}) {
+    padding: 0 ${({ theme }) => theme.gaps.xs};
+  }
 `;
 
 export const MainSection = styled.div``;

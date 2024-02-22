@@ -9,6 +9,10 @@ const HomeWrapper = styled.section`
   padding: ${({ theme }) => theme.gaps.l} ${({ theme }) => theme.gaps.m};
   background: ${({ theme }) => theme.backgroundColor};
   color: ${({ theme }) => theme.textColor};
+
+  @media (max-width: ${({ theme }) => theme.sizes.px850}) {
+    padding: ${({ theme }) => theme.gaps.m} ${({ theme }) => theme.gaps.xs};
+  }
 `;
 
 export default HomeWrapper;
