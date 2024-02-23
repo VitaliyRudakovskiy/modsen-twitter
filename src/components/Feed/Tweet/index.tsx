@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
   arrayRemove,
@@ -16,6 +16,7 @@ import { firestore, storage } from '@/db';
 import convertTimestamp from '@/helpers/convertTimestamp';
 import defineLikeIcon from '@/helpers/defineLikeIcon';
 import isLikedByUser from '@/helpers/isLikedByUser';
+import { selectTheme } from '@/store/slices/themeSlice';
 import { selectUser } from '@/store/slices/userSlice';
 import { ITweetProps } from '@/types';
 
@@ -34,9 +35,10 @@ import {
   Wrapper,
 } from './styled';
 
-const Tweet = ({ tweetData, id }: ITweetProps) => {
+const Tweet = memo(({ tweetData, id }: ITweetProps) => {
   const { text, email, name, file, likedBy, createdAt } = tweetData;
   const { id: userId, email: userEmail } = useSelector(selectUser);
+  const theme = useSelector(selectTheme);
 
   const [isLiked, setIsLiked] = useState(() => isLikedByUser(likedBy, userId));
   const [fileURL, setFileURL] = useState<string>('');
@@ -84,7 +86,7 @@ const Tweet = ({ tweetData, id }: ITweetProps) => {
     }
   };
 
-  const LikeIcon = defineLikeIcon(isLiked);
+  const LikeIcon = defineLikeIcon(isLiked, theme);
 
   return (
     <TweetContainer>
@@ -110,7 +112,7 @@ const Tweet = ({ tweetData, id }: ITweetProps) => {
 
         {userEmail === email && (
           <Delete
-            src={ICONS.delete}
+            src={theme === 'dark' ? ICONS.deleteDark : ICONS.delete}
             alt='delete button'
             onClick={handleDeleteTweet}
           />
@@ -118,6 +120,6 @@ const Tweet = ({ tweetData, id }: ITweetProps) => {
       </MainContent>
     </TweetContainer>
   );
-};
+});
 
 export default Tweet;

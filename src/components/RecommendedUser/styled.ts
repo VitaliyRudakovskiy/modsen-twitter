@@ -5,6 +5,7 @@ export const UserContainer = styled.div`
   align-items: center;
   gap: ${({ theme }) => theme.gaps.s};
   width: ${({ theme }) => theme.sizes.full};
+  max-width: ${({ theme }) => theme.sizes.full};
 `;
 
 export const MainContent = styled.div`
@@ -12,6 +13,9 @@ export const MainContent = styled.div`
   align-items: center;
   justify-content: space-between;
   width: ${({ theme }) => theme.sizes.full};
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 export const UserInfo = styled.div`
@@ -19,6 +23,8 @@ export const UserInfo = styled.div`
   flex-direction: column;
   gap: ${({ theme }) => theme.gaps.xs3};
   margin-right: ${({ theme }) => theme.gaps.l};
+  max-width: 60%;
+  overflow: hidden;
 `;
 
 export const UserPhoto = styled.img``;

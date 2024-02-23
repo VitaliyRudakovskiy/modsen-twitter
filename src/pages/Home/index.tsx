@@ -2,13 +2,15 @@ import Feed from '@/components/Feed';
 import SearchSidebar from '@/components/SearchSidebar';
 import Sidebar from '@/components/Sidebar';
 
-import HomeWrapper from './styled';
+import { HomeWrapper, MainContent } from './styled';
 
 const Home = () => {
   return (
     <HomeWrapper>
       <Sidebar />
-      <Feed />
+      <MainContent>
+        <Feed />
+      </MainContent>
       <SearchSidebar />
     </HomeWrapper>
   );

@@ -46,6 +46,7 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const UploadFileLabel = styled.label<IStyledLabelProps>`
+  position: relative;
   display: flex;
   align-items: center;
   gap: ${({ theme }) => theme.gaps.s};

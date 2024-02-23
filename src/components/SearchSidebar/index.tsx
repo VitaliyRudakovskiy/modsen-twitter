@@ -9,8 +9,11 @@ import { selectSearch, setSearchText } from '@/store/slices/searchSlice';
 import { ISearchedUser, ITweetData } from '@/types';
 import Search from '@/UI/Search';
 
+import SearchbarMobile from '../SearchMobile';
+
 import {
   MemesImage,
+  Overlay,
   RecommendationsTitle,
   SearchSidebarContainer,
   ShowMoreLessButton,
@@ -21,6 +24,7 @@ const SearchSidebar = () => {
   const [items, setItems] = useState<ITweetData[] | ISearchedUser[]>([]);
   const [visibleItems, setVisibleItems] = useState(3);
   const [showMore, setShowMore] = useState<boolean>(true);
+  const [isSearchbarOpen, setIsSearchbarOpen] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -78,27 +82,39 @@ const SearchSidebar = () => {
     setShowMore(true);
   };
 
+  const closeSearchbar = () => setIsSearchbarOpen(false);
+
+  const toggleSearchbar = () => {
+    setIsSearchbarOpen((prevState) => !prevState);
+  };
+
   return (
-    <SearchSidebarContainer data-cy='searchbar'>
-      <Search value={inputValue} handleChange={handleInputChange} />
-      <MemesImage src={Memes} alt='Memes from twitter' />
-      <RecommendationsTitle>
-        {inputValue ? 'Search results' : 'You might like'}
-      </RecommendationsTitle>
-      {items.slice(0, visibleItems).map(({ name, email }) => (
-        <RecommendedUser key={email} name={name} email={email} />
-      ))}
-      {showMore && items?.length > 3 && (
-        <ShowMoreLessButton onClick={handleShowMore}>
-          Show more
-        </ShowMoreLessButton>
-      )}
-      {!showMore && (
-        <ShowMoreLessButton onClick={handleShowLess}>
-          Show less
-        </ShowMoreLessButton>
-      )}
-    </SearchSidebarContainer>
+    <>
+      {isSearchbarOpen && <Overlay onClick={closeSearchbar} />}
+
+      <SearchSidebarContainer $isOpen={isSearchbarOpen} data-cy='searchbar'>
+        <Search value={inputValue} handleChange={handleInputChange} />
+        <MemesImage src={Memes} alt='Memes from twitter' />
+        <RecommendationsTitle>
+          {inputValue ? 'Search results' : 'You might like'}
+        </RecommendationsTitle>
+        {items.slice(0, visibleItems).map(({ name, email }) => (
+          <RecommendedUser key={email} name={name} email={email} />
+        ))}
+        {showMore && items?.length > 3 && (
+          <ShowMoreLessButton onClick={handleShowMore}>
+            Show more
+          </ShowMoreLessButton>
+        )}
+        {!showMore && (
+          <ShowMoreLessButton onClick={handleShowLess}>
+            Show less
+          </ShowMoreLessButton>
+        )}
+      </SearchSidebarContainer>
+
+      <SearchbarMobile onClick={toggleSearchbar} />
+    </>
   );
 };
 

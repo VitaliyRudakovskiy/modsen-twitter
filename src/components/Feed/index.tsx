@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import {
@@ -31,7 +31,7 @@ import {
 import Tweet from './Tweet';
 import { IFeedProps } from './types';
 
-const Feed = ({ profileEmail }: IFeedProps) => {
+const Feed = memo(({ profileEmail }: IFeedProps) => {
   const [tweets, setTweets] = useState<ITweetProps[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const searchInput = useSelector(selectSearch);
@@ -104,6 +104,6 @@ const Feed = ({ profileEmail }: IFeedProps) => {
       )}
     </FeedContainer>
   );
-};
+});
 
 export default Feed;

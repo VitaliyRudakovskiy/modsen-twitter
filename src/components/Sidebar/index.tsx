@@ -8,6 +8,7 @@ import ICONS from '@/constants/icons';
 import SidebarLinks from '@/constants/sidebarLinks';
 import { logout } from '@/db/index';
 import ROUTES from '@/routes';
+import { selectTheme } from '@/store/slices/themeSlice';
 import { selectUser, setCurrentUser } from '@/store/slices/userSlice';
 import Button from '@/UI/Button';
 
@@ -16,6 +17,7 @@ import TweetModal from '../TweetModal';
 
 import {
   Avatar,
+  Overlay,
   ProfileEmail,
   ProfileInfo,
   ProfileName,
@@ -29,8 +31,9 @@ import {
 
 const Sidebar = () => {
   const { name, email } = useSelector(selectUser);
+  const theme = useSelector(selectTheme);
   const [isTweetModalOpen, setIsTweetModalOpen] = useState(false);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -53,23 +56,33 @@ const Sidebar = () => {
   const closeModal = () => setIsTweetModalOpen(false);
   const showModal = () => setIsTweetModalOpen(true);
 
+  const closeSidebar = () => setIsSidebarOpen(false);
+
   const toggleSidebar = () => {
     setIsSidebarOpen((prevState) => !prevState);
   };
 
   return (
     <>
-      <SidebarWrapper $isOpen={isSidebarOpen} data-cy='sidebar'>
+      {isSidebarOpen && <Overlay onClick={closeSidebar} />}
+      <SidebarWrapper
+        $isOpen={isSidebarOpen}
+        data-cy='sidebar'
+        onClick={closeSidebar}
+      >
         <TwitterIcon src={ICONS.twitter} alt='twitter' />
         <SidebarLinksContainer>
-          {SidebarLinks.map(({ title, path, icon }) => (
+          {SidebarLinks.map(({ title, path, icon, iconDark }) => (
             <SidebarLink
               className={({ isActive }) => (isActive ? 'active' : '')}
               key={path}
               to={path}
               data-cy={`sidebar-${title}`}
             >
-              <SidebarLinkImage src={icon} alt='sidebar link icon' />
+              <SidebarLinkImage
+                src={theme === 'dark' ? iconDark : icon}
+                alt='sidebar link icon'
+              />
               {title}
             </SidebarLink>
           ))}

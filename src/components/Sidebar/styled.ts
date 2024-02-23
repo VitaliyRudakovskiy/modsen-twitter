@@ -12,15 +12,24 @@ export const SidebarWrapper = styled.section<{ $isOpen: boolean }>`
     background-color: ${({ theme }) => theme.backgroundColor};
     position: fixed;
     top: 0;
-    left: ${({ theme, $isOpen }) =>
-      $isOpen ? theme.gaps.m : `-${theme.sizes.px300}`};
+    left: ${({ theme, $isOpen }) => ($isOpen ? 0 : `-${theme.sizes.px300}`)};
     height: ${({ theme }) => theme.sizes.vh100};
     padding: ${({ theme }) => theme.gaps.xl7} ${({ theme }) => theme.gaps.xl2}
-      20px 0;
+      20px 20px;
     transition: all 0.3s ease-out;
     overflow: auto;
     z-index: 3;
   }
+`;
+
+export const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2;
 `;
 
 export const SidebarLinksContainer = styled.div`
@@ -51,6 +60,9 @@ export const SidebarLink = styled(NavLink)`
 
 export const SidebarLinkImage = styled.img`
   width: ${({ theme }) => theme.gaps.xl2};
+
+  background-color: transparent;
+  color: red;
 `;
 
 export const TwitterIcon = styled.img`

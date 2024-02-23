@@ -4,6 +4,7 @@ import BookmarksIcon from '@/assets/icons/bookmarks.svg';
 import BookmarksDarkIcon from '@/assets/icons/bookmarks-dark.svg';
 import CommentsIcon from '@/assets/icons/comment.svg';
 import DeleteIcon from '@/assets/icons/delete.svg';
+import DeleteDarkIcon from '@/assets/icons/delete-dark.svg';
 import GifIcon from '@/assets/icons/gif.svg';
 import GoogleIcon from '@/assets/icons/google.png';
 import HashtagIcon from '@/assets/icons/hashtag.svg';
@@ -13,11 +14,13 @@ import HomeOutlineIcon from '@/assets/icons/home-outline.svg';
 import ImageIcon from '@/assets/icons/image.svg';
 import LikeFillIcon from '@/assets/icons/like-fill.svg';
 import LikeOutlineIcon from '@/assets/icons/like-outline.svg';
+import LikeOutlineDarkIcon from '@/assets/icons/like-outline-dark.svg';
 import ListsIcon from '@/assets/icons/lists.svg';
 import ListsDarkIcon from '@/assets/icons/lists-dark.svg';
 import MessagesIcon from '@/assets/icons/messages.svg';
 import MessagesDarkIcon from '@/assets/icons/messages-dark.svg';
 import MoreIcon from '@/assets/icons/more.svg';
+import MoreDarkIcon from '@/assets/icons/more-dark.svg';
 import MoreSimpleIcon from '@/assets/icons/more-simple.png';
 import NotificationIcon from '@/assets/icons/notification.svg';
 import NotificationDarkIcon from '@/assets/icons/notification-dark.svg';
@@ -46,20 +49,24 @@ const ICONS: IString = {
   bookmarksDark: BookmarksDarkIcon,
   comments: CommentsIcon,
   delete: DeleteIcon,
+  deleteDark: DeleteDarkIcon,
   gif: GifIcon,
   google: GoogleIcon,
   hashtag: HashtagIcon,
   hashtagBald: HashtagBaldIcon,
   hashtagFill: HomeFillIcon,
   homeOutline: HomeOutlineIcon,
-  homeFill: ImageIcon,
+  homeFill: HomeFillIcon,
+  image: ImageIcon,
   likeFill: LikeFillIcon,
   likeOutline: LikeOutlineIcon,
+  likeOutlineDark: LikeOutlineDarkIcon,
   lists: ListsIcon,
   listsDark: ListsDarkIcon,
   messages: MessagesIcon,
   messagesDark: MessagesDarkIcon,
   more: MoreIcon,
+  moreDark: MoreDarkIcon,
   moreSimple: MoreSimpleIcon,
   notification: NotificationIcon,
   notificationDark: NotificationDarkIcon,

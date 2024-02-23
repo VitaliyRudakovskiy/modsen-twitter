@@ -18,7 +18,7 @@ export const BurgerIconWrapper = styled.div<{ $isOpen: boolean }>`
   }
 `;
 
-export const BurgerLine = styled.div`
+const BurgerLine = styled.div`
   width: ${({ theme }) => theme.sizes.full};
   height: 3px;
   border-radius: 2px;

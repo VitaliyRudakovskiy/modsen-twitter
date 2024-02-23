@@ -12,8 +12,12 @@ export const Header = styled.div`
   width: ${({ theme }) => theme.sizes.full};
   padding: ${({ theme }) => theme.gaps.m};
 
+  @media (max-width: ${({ theme }) => theme.sizes.px1230}) {
+    padding-right: ${({ theme }) => theme.gaps.xl6};
+  }
+
   @media (max-width: ${({ theme }) => theme.sizes.px850}) {
-    padding: 0 ${({ theme }) => theme.gaps.m} 0 ${({ theme }) => theme.gaps.xl7};
+    padding: 0 ${({ theme }) => theme.gaps.xl7};
   }
 `;
 

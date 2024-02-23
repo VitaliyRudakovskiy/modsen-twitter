@@ -25,7 +25,7 @@ export const Avatar = styled.img`
 
 export const TweetFile = styled.img`
   width: ${({ theme }) => theme.sizes.full};
-  max-height: ${({ theme }) => theme.sizes.px400};
+  max-height: ${({ theme }) => theme.sizes.px450};
   border-radius: ${({ theme }) => theme.gaps.s};
   object-fit: contain;
 

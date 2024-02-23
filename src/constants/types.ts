@@ -22,6 +22,7 @@ export type ISidebarLink = {
   title: string;
   path: string;
   icon: string;
+  iconDark: string;
 };
 
 export type ISignupSelect = {
