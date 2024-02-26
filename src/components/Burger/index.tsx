@@ -1,18 +1,13 @@
-import {
-  BottomBurgerLine,
-  BurgerIconWrapper,
-  MiddleBurgerLine,
-  TopBurgerLine,
-} from './styled';
+import * as Styled from './styled';
 import { IBurgerProps } from './types';
 
 const Burger = ({ isOpen, onClick }: IBurgerProps) => {
   return (
-    <BurgerIconWrapper $isOpen={isOpen} onClick={onClick}>
-      <TopBurgerLine $isOpen={isOpen} />
-      <MiddleBurgerLine $isOpen={isOpen} />
-      <BottomBurgerLine $isOpen={isOpen} />
-    </BurgerIconWrapper>
+    <Styled.BurgerIconWrapper $isOpen={isOpen} onClick={onClick}>
+      <Styled.TopBurgerLine $isOpen={isOpen} />
+      <Styled.MiddleBurgerLine $isOpen={isOpen} />
+      <Styled.BottomBurgerLine $isOpen={isOpen} />
+    </Styled.BurgerIconWrapper>
   );
 };
 

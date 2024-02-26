@@ -2,30 +2,23 @@ import Avatar from '@/assets/avatar.png';
 import ButtonVariants from '@/constants/buttonVariants';
 import Button from '@/UI/Button';
 
-import {
-  MainContent,
-  UserContainer,
-  UserEmail,
-  UserInfo,
-  UserName,
-  UserPhoto,
-} from './styled';
+import * as Styled from './styled';
 import { IUserProps } from './types';
 
 const RecommendedUser = ({ name, email }: IUserProps) => {
   return (
-    <UserContainer>
-      <UserPhoto src={Avatar} alt='user avatar' />
-      <MainContent>
-        <UserInfo>
-          <UserName>{name}</UserName>
-          <UserEmail>@{email.split('@')[0]}</UserEmail>
-        </UserInfo>
+    <Styled.UserContainer>
+      <Styled.UserPhoto src={Avatar} alt='user avatar' />
+      <Styled.MainContent>
+        <Styled.UserInfo>
+          <Styled.UserName>{name}</Styled.UserName>
+          <Styled.UserEmail>@{email.split('@')[0]}</Styled.UserEmail>
+        </Styled.UserInfo>
         <Button variant={ButtonVariants.follow} width='90px'>
           Follow
         </Button>
-      </MainContent>
-    </UserContainer>
+      </Styled.MainContent>
+    </Styled.UserContainer>
   );
 };
 

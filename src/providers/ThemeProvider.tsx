@@ -5,9 +5,9 @@ import { selectTheme } from '@/store/slices/themeSlice';
 import GlobalStyle from '@/theme/style/global';
 import { darkTheme, lightTheme } from '@/theme/theme';
 
-import { IThemeProviderProps } from './types';
+import { IChildren } from './types';
 
-const ThemeProvider = ({ children }: IThemeProviderProps) => {
+const ThemeProvider = ({ children }: IChildren) => {
   const currentTheme = useSelector(selectTheme);
 
   return (

@@ -9,23 +9,7 @@ import ROUTES from '@/routes';
 import Button from '@/UI/Button';
 import signupWithGoogle from '@/utils/signupWithGoogle';
 
-import {
-  AuthContainer,
-  AuthContent,
-  ButtonsContainer,
-  ExtraText,
-  FooterLink,
-  FooterLinksContainer,
-  LoginLink,
-  MainContent,
-  Paragraph,
-  Span,
-  Subtitle,
-  TermsText,
-  Title,
-  TwitterImage,
-  TwitterLogo,
-} from './styled';
+import * as Styled from './styled';
 
 const Auth = () => {
   const navigate = useNavigate();
@@ -44,18 +28,18 @@ const Auth = () => {
   };
 
   return (
-    <AuthContainer>
-      <MainContent>
-        <TwitterImage
+    <Styled.AuthContainer>
+      <Styled.MainContent>
+        <Styled.TwitterImage
           src={TwitterBg}
           alt='Background twitter'
           data-cy='auth-image'
         />
-        <AuthContent>
-          <TwitterLogo src={ICONS.twitter} />
-          <Title>Happening now</Title>
-          <Subtitle>Join Twitter today</Subtitle>
-          <ButtonsContainer data-cy='auth-signup-buttons'>
+        <Styled.AuthContent>
+          <Styled.TwitterLogo src={ICONS.twitter} />
+          <Styled.Title>Happening now</Styled.Title>
+          <Styled.Subtitle>Join Twitter today</Styled.Subtitle>
+          <Styled.ButtonsContainer data-cy='auth-signup-buttons'>
             <Button
               variant={ButtonVariants.secondary}
               icon={ICONS.google}
@@ -69,29 +53,30 @@ const Auth = () => {
             >
               Sign up with email
             </Button>
-          </ButtonsContainer>
-          <TermsText>
-            By singing up you agree to the <Span>Terms of Service</Span> and
-            <Span> Privacy Policy</Span>, including
-            <Span> Cookie Use</Span>.
-          </TermsText>
-          <ExtraText>
-            <Paragraph>Already have an account?</Paragraph>
-            <LoginLink data-cy='auth-login-link' to={ROUTES.LOGIN}>
+          </Styled.ButtonsContainer>
+          <Styled.TermsText>
+            By singing up you agree to the{' '}
+            <Styled.Span>Terms of Service</Styled.Span> and
+            <Styled.Span> Privacy Policy</Styled.Span>, including
+            <Styled.Span> Cookie Use</Styled.Span>.
+          </Styled.TermsText>
+          <Styled.ExtraText>
+            <Styled.Paragraph>Already have an account?</Styled.Paragraph>
+            <Styled.LoginLink data-cy='auth-login-link' to={ROUTES.LOGIN}>
               {' '}
               Log In
-            </LoginLink>
-          </ExtraText>
-        </AuthContent>
-      </MainContent>
-      <FooterLinksContainer data-cy='auth-footer-links'>
+            </Styled.LoginLink>
+          </Styled.ExtraText>
+        </Styled.AuthContent>
+      </Styled.MainContent>
+      <Styled.FooterLinksContainer data-cy='auth-footer-links'>
         {FooterLinks.map(({ id, text, to }) => (
-          <FooterLink key={id} to={to}>
+          <Styled.FooterLink key={id} to={to}>
             {text}
-          </FooterLink>
+          </Styled.FooterLink>
         ))}
-      </FooterLinksContainer>
-    </AuthContainer>
+      </Styled.FooterLinksContainer>
+    </Styled.AuthContainer>
   );
 };
 

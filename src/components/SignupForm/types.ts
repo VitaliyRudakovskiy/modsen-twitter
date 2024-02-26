@@ -1,4 +1,4 @@
-import { ISignupForm } from '@/types';
+import { ISignupForm } from '@/types/form';
 
 export type ISignupFormProps = {
   onSubmit: (form: ISignupForm) => void;

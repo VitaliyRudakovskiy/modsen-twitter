@@ -1,5 +1,3 @@
-import { SyntheticEvent } from 'react';
-import { createPortal } from 'react-dom';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -15,22 +13,13 @@ import ButtonVariants from '@/constants/buttonVariants';
 import { profileDefaultValues, profileInputs } from '@/constants/profileInputs';
 import { firestore } from '@/db/index';
 import { selectUser, updateCurrentUser } from '@/store/slices/userSlice';
-import { IModal } from '@/types';
+import { IModal } from '@/types/form';
 import Button from '@/UI/Button';
 import Input from '@/UI/Input';
+import Portal from '@/UI/Portal';
 import profileScheme from '@/zod/profileScheme';
 
-import {
-  CloseButton,
-  ErrorMessage,
-  InputLabel,
-  InputsWrapper,
-  InputWrapper,
-  ModalContainer,
-  ModalForm,
-  ModalOverlay,
-  ModalTitle,
-} from './styled';
+import * as Styled from './styled';
 import { IProfileForm } from './types';
 
 const ProfileModal = ({ closeModal }: IModal) => {
@@ -62,9 +51,7 @@ const ProfileModal = ({ closeModal }: IModal) => {
       const updatedDataForUsers: Partial<IProfileForm> = {};
 
       fields.forEach((field) => {
-        if (data[field]) {
-          updatedDataForUsers[field] = data[field];
-        }
+        if (data[field]) updatedDataForUsers[field] = data[field];
       });
 
       await updateDoc(userRef, updatedDataForUsers);
@@ -77,45 +64,36 @@ const ProfileModal = ({ closeModal }: IModal) => {
     }
   };
 
-  const handleClose = (e: SyntheticEvent) => {
-    if (e.target === e.currentTarget) {
-      closeModal();
-    }
-  };
-
-  return createPortal(
-    <ModalOverlay onClick={handleClose}>
-      <ModalContainer>
-        <ModalTitle>Edit profile</ModalTitle>
-        <ModalForm autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
-          <InputsWrapper>
-            {profileInputs.map(({ placeholder, name, type }) => (
-              <InputWrapper key={placeholder}>
-                <InputLabel>{name}</InputLabel>
-                <Input
-                  {...register(name)}
-                  placeholder={placeholder}
-                  type={type}
-                  autoComplete={false}
-                />
-                {errors && errors[name] && (
-                  <ErrorMessage>{errors[name]?.message}</ErrorMessage>
-                )}
-              </InputWrapper>
-            ))}
-          </InputsWrapper>
-          <Button
-            type='submit'
-            variant={ButtonVariants.primary}
-            disabled={!isValid}
-          >
-            Save changes
-          </Button>
-        </ModalForm>
-        <CloseButton onClick={closeModal}>&times;</CloseButton>
-      </ModalContainer>
-    </ModalOverlay>,
-    document.body
+  return (
+    <Portal title='Edit profile' closeModal={closeModal}>
+      <Styled.ModalForm autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
+        <Styled.InputsWrapper>
+          {profileInputs.map(({ placeholder, name, type }) => (
+            <Styled.InputWrapper key={placeholder}>
+              <Styled.InputLabel>{name}</Styled.InputLabel>
+              <Input
+                {...register(name)}
+                placeholder={placeholder}
+                type={type}
+                autoComplete={false}
+              />
+              {errors && errors[name] && (
+                <Styled.ErrorMessage>
+                  {errors[name]?.message}
+                </Styled.ErrorMessage>
+              )}
+            </Styled.InputWrapper>
+          ))}
+        </Styled.InputsWrapper>
+        <Button
+          type='submit'
+          variant={ButtonVariants.primary}
+          disabled={!isValid}
+        >
+          Save changes
+        </Button>
+      </Styled.ModalForm>
+    </Portal>
   );
 };
 

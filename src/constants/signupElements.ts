@@ -1,4 +1,4 @@
-import { ISignupForm } from '@/types';
+import { ISignupForm } from '@/types/form';
 
 import { Days, Months, Years } from './dates';
 import { IFormInput, ISignupSelect } from './types';

@@ -11,6 +11,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
+import authSlice from './slices/authSlice';
 import searchSlice from './slices/searchSlice';
 import themeSlice from './slices/themeSlice';
 import tweetsSlice from './slices/tweetsSlice';
@@ -23,6 +24,7 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
+  auth: authSlice,
   theme: themeSlice,
   tweets: tweetsSlice,
   user: userSlice,

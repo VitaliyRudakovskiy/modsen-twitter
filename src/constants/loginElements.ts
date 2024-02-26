@@ -1,4 +1,4 @@
-import { ILoginForm } from '@/types';
+import { ILoginForm } from '@/types/form';
 
 import { ILoginFormInput } from './types';
 

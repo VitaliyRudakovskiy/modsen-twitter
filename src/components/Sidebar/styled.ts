@@ -1,7 +1,9 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const SidebarWrapper = styled.section<{ $isOpen: boolean }>`
+import { IIsOpen } from '@/types/form';
+
+export const SidebarWrapper = styled.aside<IIsOpen>`
   display: flex;
   flex-direction: column;
   align-items: start;

@@ -14,20 +14,12 @@ import Textarea from '@/components/Textarea';
 import { firestore } from '@/db';
 import { selectSearch } from '@/store/slices/searchSlice';
 import { setCount } from '@/store/slices/tweetsSlice';
-import { ITweetProps } from '@/types';
+import { ITweetProps } from '@/types/tweet';
 import ThemeToggler from '@/UI/ThemeToggler';
 
 import Loader from '../Loader';
 
-import {
-  FeedContainer,
-  Header,
-  HeaderTitle,
-  LoaderContainer,
-  NoTweets,
-  NoTweetsImage,
-  TweetsContainer,
-} from './styled';
+import * as Styled from './styled';
 import Tweet from './Tweet';
 import { IFeedProps } from './types';
 
@@ -74,35 +66,38 @@ const Feed = memo(({ profileEmail }: IFeedProps) => {
   }, [profileEmail, dispatch, searchInput, location]);
 
   return (
-    <FeedContainer data-cy='feed'>
+    <Styled.FeedContainer data-cy='feed'>
       {isLoading ? (
-        <LoaderContainer>
+        <Styled.LoaderContainer>
           <Loader />
-        </LoaderContainer>
+        </Styled.LoaderContainer>
       ) : (
         <>
           {!profileEmail && (
-            <Header>
-              <HeaderTitle>Home</HeaderTitle>
+            <Styled.Header>
+              <Styled.HeaderTitle>Home</Styled.HeaderTitle>
               <ThemeToggler />
-            </Header>
+            </Styled.Header>
           )}
           <Textarea />
-          <TweetsContainer>
+          <Styled.TweetsContainer>
             {tweets.length > 0 ? (
               tweets.map(({ tweetData, id }) => (
                 <Tweet key={id} id={id} tweetData={tweetData} />
               ))
             ) : (
-              <NoTweets>
+              <Styled.NoTweets>
                 No Tweets yet. When they do, they&apos;ll show up here.
-                <NoTweetsImage src={birdImage} alt='bird image for no tweets' />
-              </NoTweets>
+                <Styled.NoTweetsImage
+                  src={birdImage}
+                  alt='bird image for no tweets'
+                />
+              </Styled.NoTweets>
             )}
-          </TweetsContainer>
+          </Styled.TweetsContainer>
         </>
       )}
-    </FeedContainer>
+    </Styled.FeedContainer>
   );
 });
 

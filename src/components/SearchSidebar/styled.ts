@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 
-export const SearchSidebarContainer = styled.section<{ $isOpen: boolean }>`
+import { IIsOpen } from '@/types/form';
+
+export const SearchSidebarContainer = styled.section<IIsOpen>`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.gaps.l};
   width: ${({ theme }) => theme.sizes.full};
   min-width: 300px;
+  max-width: 400px;
   padding: 0 ${({ theme }) => theme.gaps.s};
 
   @media (max-width: ${({ theme }) => theme.sizes.px1230}) {

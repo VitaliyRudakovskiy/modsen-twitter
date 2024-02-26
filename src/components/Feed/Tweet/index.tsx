@@ -18,22 +18,9 @@ import defineLikeIcon from '@/helpers/defineLikeIcon';
 import isLikedByUser from '@/helpers/isLikedByUser';
 import { selectTheme } from '@/store/slices/themeSlice';
 import { selectUser } from '@/store/slices/userSlice';
-import { ITweetProps } from '@/types';
+import { ITweetProps } from '@/types/tweet';
 
-import {
-  Avatar,
-  Date,
-  Delete,
-  LikeImage,
-  LikesContainer,
-  MainContent,
-  MobileWrapper,
-  TweetContainer,
-  TweetFile,
-  UserEmail,
-  UserName,
-  Wrapper,
-} from './styled';
+import * as Styled from './styled';
 
 const Tweet = memo(({ tweetData, id }: ITweetProps) => {
   const { text, email, name, file, likedBy, createdAt } = tweetData;
@@ -89,36 +76,36 @@ const Tweet = memo(({ tweetData, id }: ITweetProps) => {
   const LikeIcon = defineLikeIcon(isLiked, theme);
 
   return (
-    <TweetContainer>
-      <Avatar src={avatar} alt='user photo' />
-      <MainContent>
-        <Wrapper>
-          <MobileWrapper>
-            <UserName>{name}</UserName>
-            <UserEmail>@{email.split('@')[0]}</UserEmail>
-          </MobileWrapper>
-          <Date>{convertTimestamp(createdAt)}</Date>
-        </Wrapper>
-        <Wrapper>{text}</Wrapper>
-        <Wrapper>
-          {file && <TweetFile src={fileURL} alt='tweet file' />}
-        </Wrapper>
-        <Wrapper>
-          <LikesContainer onClick={handleLikeTweet}>
-            <LikeImage src={LikeIcon} alt='like heart' />
+    <Styled.TweetContainer>
+      <Styled.Avatar src={avatar} alt='user photo' />
+      <Styled.MainContent>
+        <Styled.Wrapper>
+          <Styled.MobileWrapper>
+            <Styled.UserName>{name}</Styled.UserName>
+            <Styled.UserEmail>@{email.split('@')[0]}</Styled.UserEmail>
+          </Styled.MobileWrapper>
+          <Styled.Date>{convertTimestamp(createdAt)}</Styled.Date>
+        </Styled.Wrapper>
+        <Styled.Wrapper>{text}</Styled.Wrapper>
+        <Styled.Wrapper>
+          {file && <Styled.TweetFile src={fileURL} alt='tweet file' />}
+        </Styled.Wrapper>
+        <Styled.Wrapper>
+          <Styled.LikesContainer onClick={handleLikeTweet}>
+            <Styled.LikeImage src={LikeIcon} alt='like heart' />
             <p>{likedBy.length}</p>
-          </LikesContainer>
-        </Wrapper>
+          </Styled.LikesContainer>
+        </Styled.Wrapper>
 
         {userEmail === email && (
-          <Delete
+          <Styled.Delete
             src={theme === 'dark' ? ICONS.deleteDark : ICONS.delete}
             alt='delete button'
             onClick={handleDeleteTweet}
           />
         )}
-      </MainContent>
-    </TweetContainer>
+      </Styled.MainContent>
+    </Styled.TweetContainer>
   );
 });
 

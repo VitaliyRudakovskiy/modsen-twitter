@@ -6,18 +6,13 @@ import Memes from '@/assets/memes.webp';
 import RecommendedUser from '@/components/RecommendedUser';
 import { firestore } from '@/db';
 import { selectSearch, setSearchText } from '@/store/slices/searchSlice';
-import { ISearchedUser, ITweetData } from '@/types';
+import { ITweetData } from '@/types/tweet';
+import { ISearchedUser } from '@/types/user';
 import Search from '@/UI/Search';
 
 import SearchbarMobile from '../SearchMobile';
 
-import {
-  MemesImage,
-  Overlay,
-  RecommendationsTitle,
-  SearchSidebarContainer,
-  ShowMoreLessButton,
-} from './styled';
+import * as Styled from './styled';
 
 const SearchSidebar = () => {
   const inputValue = useSelector(selectSearch);
@@ -90,28 +85,31 @@ const SearchSidebar = () => {
 
   return (
     <>
-      {isSearchbarOpen && <Overlay onClick={closeSearchbar} />}
+      {isSearchbarOpen && <Styled.Overlay onClick={closeSearchbar} />}
 
-      <SearchSidebarContainer $isOpen={isSearchbarOpen} data-cy='searchbar'>
+      <Styled.SearchSidebarContainer
+        $isOpen={isSearchbarOpen}
+        data-cy='searchbar'
+      >
         <Search value={inputValue} handleChange={handleInputChange} />
-        <MemesImage src={Memes} alt='Memes from twitter' />
-        <RecommendationsTitle>
+        <Styled.MemesImage src={Memes} alt='Memes from twitter' />
+        <Styled.RecommendationsTitle>
           {inputValue ? 'Search results' : 'You might like'}
-        </RecommendationsTitle>
+        </Styled.RecommendationsTitle>
         {items.slice(0, visibleItems).map(({ name, email }) => (
           <RecommendedUser key={email} name={name} email={email} />
         ))}
         {showMore && items?.length > 3 && (
-          <ShowMoreLessButton onClick={handleShowMore}>
+          <Styled.ShowMoreLessButton onClick={handleShowMore}>
             Show more
-          </ShowMoreLessButton>
+          </Styled.ShowMoreLessButton>
         )}
         {!showMore && (
-          <ShowMoreLessButton onClick={handleShowLess}>
+          <Styled.ShowMoreLessButton onClick={handleShowLess}>
             Show less
-          </ShowMoreLessButton>
+          </Styled.ShowMoreLessButton>
         )}
-      </SearchSidebarContainer>
+      </Styled.SearchSidebarContainer>
 
       <SearchbarMobile onClick={toggleSearchbar} />
     </>

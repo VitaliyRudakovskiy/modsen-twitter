@@ -9,3 +9,7 @@ export type ITweets = {
 export type ISearch = {
   input: string;
 };
+
+export type IAuth = {
+  isAuth: boolean;
+};

@@ -1,23 +1,17 @@
 import ROUTES from '@/routes';
 
-import {
-  NotFoundContainer,
-  NotFoundSubtitle,
-  NotFoundText,
-  NotFoundTitle,
-  StyledLink,
-} from './styled';
+import * as Styled from './styled';
 
 const NotFound = () => {
   return (
-    <NotFoundContainer>
-      <NotFoundTitle>404</NotFoundTitle>
-      <NotFoundSubtitle>Page not found</NotFoundSubtitle>
-      <NotFoundText>
+    <Styled.NotFoundContainer>
+      <Styled.NotFoundTitle>404</Styled.NotFoundTitle>
+      <Styled.NotFoundSubtitle>Page not found</Styled.NotFoundSubtitle>
+      <Styled.NotFoundText>
         The link you clicked may be broken or the page may have been removed.
-      </NotFoundText>
-      <StyledLink to={ROUTES.HOME}>Back to Home Page</StyledLink>
-    </NotFoundContainer>
+      </Styled.NotFoundText>
+      <Styled.StyledLink to={ROUTES.HOME}>Back to Home Page</Styled.StyledLink>
+    </Styled.NotFoundContainer>
   );
 };
 

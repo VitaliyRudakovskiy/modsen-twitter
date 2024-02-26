@@ -1,7 +1,7 @@
 import { ref, uploadBytes } from 'firebase/storage';
 
 import { storage } from '@/db';
-import { IFile } from '@/types';
+import { IFile } from '@/types/tweet';
 
 import compressFile from './compressFile';
 

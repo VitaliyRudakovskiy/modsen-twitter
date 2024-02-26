@@ -2,12 +2,7 @@ import { Component } from 'react';
 
 import errorImage from '@/assets/error-image.webp';
 
-import {
-  Error,
-  ErrorBoundaryImage,
-  ErrorBoundaryWrapper,
-  ErrorInfoText,
-} from './styled';
+import * as Styled from './styled';
 import { ErrorBoundaryProps, ErrorBoundaryState } from './types';
 
 class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
@@ -32,11 +27,13 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
 
     if (hasError || error) {
       return (
-        <ErrorBoundaryWrapper>
-          <ErrorBoundaryImage src={errorImage} alt='something wrong' />
-          <Error>Oops! Something went wrong</Error>
-          <ErrorInfoText>{error && error.toString()}</ErrorInfoText>
-        </ErrorBoundaryWrapper>
+        <Styled.ErrorBoundaryWrapper>
+          <Styled.ErrorBoundaryImage src={errorImage} alt='something wrong' />
+          <Styled.Error>Oops! Something went wrong</Styled.Error>
+          <Styled.ErrorInfoText>
+            {error && error.toString()}
+          </Styled.ErrorInfoText>
+        </Styled.ErrorBoundaryWrapper>
       );
     }
 

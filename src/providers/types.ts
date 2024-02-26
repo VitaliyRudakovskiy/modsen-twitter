@@ -5,6 +5,6 @@ export type IThemeContextProps = {
   toggleTheme: () => void;
 };
 
-export type IThemeProviderProps = {
+export type IChildren = {
   children: ReactNode;
 };

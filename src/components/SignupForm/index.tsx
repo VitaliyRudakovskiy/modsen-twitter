@@ -8,23 +8,13 @@ import {
   signupSelects,
 } from '@/constants/signupElements';
 import ROUTES from '@/routes';
-import { ISignupForm } from '@/types';
+import { ISignupForm } from '@/types/form';
 import Button from '@/UI/Button';
 import Input from '@/UI/Input';
 import Select from '@/UI/Select';
 import { signupScheme } from '@/zod/signupScheme';
 
-import {
-  BirthText,
-  BirthTitle,
-  ErrorMessage,
-  InputContainer,
-  SelectsContainer,
-  SignupFormContainer,
-  SignupInputsContainer,
-  SignupTitle,
-  StyledLink,
-} from './styled';
+import * as Styled from './styled';
 import { ISignupFormProps } from './types';
 
 const SignupForm = ({ onSubmit, isButtonActive }: ISignupFormProps) => {
@@ -39,15 +29,15 @@ const SignupForm = ({ onSubmit, isButtonActive }: ISignupFormProps) => {
   });
 
   return (
-    <SignupFormContainer
+    <Styled.SignupFormContainer
       onSubmit={handleSubmit(onSubmit)}
       data-cy='signup-form'
     >
-      <SignupTitle>Create an account</SignupTitle>
+      <Styled.SignupTitle>Create an account</Styled.SignupTitle>
 
-      <SignupInputsContainer>
+      <Styled.SignupInputsContainer>
         {signupInputs.map(({ placeholder, type, name }) => (
-          <InputContainer key={placeholder}>
+          <Styled.InputContainer key={placeholder}>
             <Input
               {...register(name)}
               placeholder={placeholder}
@@ -55,25 +45,25 @@ const SignupForm = ({ onSubmit, isButtonActive }: ISignupFormProps) => {
               data-cy={`signup-form-${name}`}
             />
             {errors && errors[name] && (
-              <ErrorMessage>{errors[name]?.message}</ErrorMessage>
+              <Styled.ErrorMessage>{errors[name]?.message}</Styled.ErrorMessage>
             )}
-          </InputContainer>
+          </Styled.InputContainer>
         ))}
-      </SignupInputsContainer>
+      </Styled.SignupInputsContainer>
 
-      <StyledLink data-cy='signup-email-link' to={ROUTES.AUTH}>
+      <Styled.StyledLink data-cy='signup-email-link' to={ROUTES.AUTH}>
         Use email
-      </StyledLink>
+      </Styled.StyledLink>
 
-      <BirthTitle>Date of Birth</BirthTitle>
-      <BirthText>
+      <Styled.BirthTitle>Date of Birth</Styled.BirthTitle>
+      <Styled.BirthText>
         Facilisi sem pulvinar velit nunc, gravida scelerisque amet nibh sit.
         Quis bibendum ante phasellus metus, magna lacinia sed augue. Odio enim
         nascetur leo mauris vel eget. Pretium id ullamcorper blandit viverra
         dignissim eget tellus. Nibh mi massa in molestie a sit. Elit congue.
-      </BirthText>
+      </Styled.BirthText>
 
-      <SelectsContainer>
+      <Styled.SelectsContainer>
         {signupSelects.map(({ options, placeholder, width, name }) => (
           <Select
             {...register(name)}
@@ -84,7 +74,7 @@ const SignupForm = ({ onSubmit, isButtonActive }: ISignupFormProps) => {
             data-cy={`signup-form-${name}`}
           />
         ))}
-      </SelectsContainer>
+      </Styled.SelectsContainer>
       <Button
         dataCy='signup-submit-button'
         variant={ButtonVariants.primary}
@@ -93,7 +83,7 @@ const SignupForm = ({ onSubmit, isButtonActive }: ISignupFormProps) => {
       >
         Next
       </Button>
-    </SignupFormContainer>
+    </Styled.SignupFormContainer>
   );
 };
 

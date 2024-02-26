@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 import { flexBetween } from '@/theme/style/mixins';
+import { IIsOpen } from '@/types/form';
 
-export const BurgerIconWrapper = styled.div<{ $isOpen: boolean }>`
+export const BurgerIconWrapper = styled.div<IIsOpen>`
   display: none;
 
   @media (max-width: ${({ theme }) => theme.sizes.px850}) {
@@ -26,16 +27,16 @@ const BurgerLine = styled.div`
   transition: all 0.3s ease;
 `;
 
-export const TopBurgerLine = styled(BurgerLine)<{ $isOpen: boolean }>`
+export const TopBurgerLine = styled(BurgerLine)<IIsOpen>`
   transform: ${({ $isOpen }) => ($isOpen ? 'rotate(45deg)' : 'none')};
   transform-origin: bottom left;
 `;
 
-export const MiddleBurgerLine = styled(BurgerLine)<{ $isOpen: boolean }>`
+export const MiddleBurgerLine = styled(BurgerLine)<IIsOpen>`
   opacity: ${({ $isOpen }) => ($isOpen ? 0 : 1)};
 `;
 
-export const BottomBurgerLine = styled(BurgerLine)<{ $isOpen: boolean }>`
+export const BottomBurgerLine = styled(BurgerLine)<IIsOpen>`
   transform: ${({ $isOpen }) => ($isOpen ? 'rotate(315deg)' : 'none')};
   transform-origin: bottom left;
   margin-bottom: ${({ $isOpen }) => ($isOpen ? '-4px' : '0')};

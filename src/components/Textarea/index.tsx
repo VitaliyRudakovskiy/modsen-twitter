@@ -5,24 +5,13 @@ import userPhoto from '@/assets/avatar.png';
 import uploadImage from '@/assets/upload.png';
 import ButtonVariants from '@/constants/buttonVariants';
 import { selectUser } from '@/store/slices/userSlice';
-import { IFile } from '@/types';
+import { IFile } from '@/types/tweet';
 import Button from '@/UI/Button';
 import uploadTweet from '@/utils/uploadTweet';
 
 import Loader from '../Loader';
 
-import {
-  Area,
-  AreaContainer,
-  Avatar,
-  ButtonWrapper,
-  FileName,
-  InputForFile,
-  LoaderContainer,
-  TextareaWrapper,
-  UploadFile,
-  UploadFileLabel,
-} from './styled';
+import * as Styled from './styled';
 
 const Textarea = () => {
   const { id, name, email } = useSelector(selectUser);
@@ -54,32 +43,32 @@ const Textarea = () => {
   };
 
   return (
-    <TextareaWrapper data-testid='textarea'>
+    <Styled.TextareaWrapper data-testid='textarea'>
       {isLoading && (
-        <LoaderContainer>
+        <Styled.LoaderContainer>
           <Loader />
-        </LoaderContainer>
+        </Styled.LoaderContainer>
       )}
-      <Avatar src={userPhoto} alt='user avatar' />
-      <AreaContainer>
-        <Area
+      <Styled.Avatar src={userPhoto} alt='user avatar' />
+      <Styled.AreaContainer>
+        <Styled.Area
           placeholder="What's happening"
           value={textValue}
           onChange={handleChange}
         />
 
-        <UploadFileLabel $fileName={fileName} htmlFor='upload-file'>
-          <UploadFile src={uploadImage} alt='upload file icon' />
-          <InputForFile
+        <Styled.UploadFileLabel $fileName={fileName} htmlFor='upload-file'>
+          <Styled.UploadFile src={uploadImage} alt='upload file icon' />
+          <Styled.InputForFile
             type='file'
             id='upload-file'
             onChange={handleUploadFile}
           />
 
-          {fileName && <FileName>{fileName}</FileName>}
-        </UploadFileLabel>
+          {fileName && <Styled.FileName>{fileName}</Styled.FileName>}
+        </Styled.UploadFileLabel>
 
-        <ButtonWrapper data-testid='tweet-button'>
+        <Styled.ButtonWrapper data-testid='tweet-button'>
           <Button
             variant={ButtonVariants.primary}
             disabled={!textValue || isLoading}
@@ -88,9 +77,9 @@ const Textarea = () => {
           >
             Tweet
           </Button>
-        </ButtonWrapper>
-      </AreaContainer>
-    </TextareaWrapper>
+        </Styled.ButtonWrapper>
+      </Styled.AreaContainer>
+    </Styled.TextareaWrapper>
   );
 };
 

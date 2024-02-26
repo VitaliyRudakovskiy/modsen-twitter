@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction } from 'react';
 import { addDoc, collection } from 'firebase/firestore';
 
 import { firestore } from '@/db';
-import { IFile } from '@/types';
+import { IFile } from '@/types/tweet';
 
 import uploadFile from './uploadFile';
 

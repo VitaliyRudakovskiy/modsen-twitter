@@ -1,6 +1,6 @@
 import Compressor from 'compressorjs';
 
-import { IFile } from '@/types';
+import { IFile } from '@/types/tweet';
 
 const compressFile = (file: IFile): Promise<Blob> => {
   const nonNullableFile = file! as Blob;

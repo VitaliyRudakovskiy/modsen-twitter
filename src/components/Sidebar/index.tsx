@@ -15,19 +15,7 @@ import Button from '@/UI/Button';
 import Burger from '../Burger';
 import TweetModal from '../TweetModal';
 
-import {
-  Avatar,
-  Overlay,
-  ProfileEmail,
-  ProfileInfo,
-  ProfileName,
-  ProfileWrapper,
-  SidebarLink,
-  SidebarLinkImage,
-  SidebarLinksContainer,
-  SidebarWrapper,
-  TwitterIcon,
-} from './styled';
+import * as Styled from './styled';
 
 const Sidebar = () => {
   const { name, email } = useSelector(selectUser);
@@ -64,29 +52,29 @@ const Sidebar = () => {
 
   return (
     <>
-      {isSidebarOpen && <Overlay onClick={closeSidebar} />}
-      <SidebarWrapper
+      {isSidebarOpen && <Styled.Overlay onClick={closeSidebar} />}
+      <Styled.SidebarWrapper
         $isOpen={isSidebarOpen}
         data-cy='sidebar'
         onClick={closeSidebar}
       >
-        <TwitterIcon src={ICONS.twitter} alt='twitter' />
-        <SidebarLinksContainer>
+        <Styled.TwitterIcon src={ICONS.twitter} alt='twitter' />
+        <Styled.SidebarLinksContainer>
           {SidebarLinks.map(({ title, path, icon, iconDark }) => (
-            <SidebarLink
+            <Styled.SidebarLink
               className={({ isActive }) => (isActive ? 'active' : '')}
               key={path}
               to={path}
               data-cy={`sidebar-${title}`}
             >
-              <SidebarLinkImage
+              <Styled.SidebarLinkImage
                 src={theme === 'dark' ? iconDark : icon}
                 alt='sidebar link icon'
               />
               {title}
-            </SidebarLink>
+            </Styled.SidebarLink>
           ))}
-        </SidebarLinksContainer>
+        </Styled.SidebarLinksContainer>
 
         <Button
           dataCy='sidebar-tweet-button'
@@ -96,13 +84,13 @@ const Sidebar = () => {
           Tweet
         </Button>
 
-        <ProfileWrapper data-cy='sidebar-profile-wrapper'>
-          <Avatar src={AvatarInfo} alt='Avatar' />
-          <ProfileInfo>
-            <ProfileName>{name}</ProfileName>
-            <ProfileEmail>@{email.split('@')[0]}</ProfileEmail>
-          </ProfileInfo>
-        </ProfileWrapper>
+        <Styled.ProfileWrapper data-cy='sidebar-profile-wrapper'>
+          <Styled.Avatar src={AvatarInfo} alt='Avatar' />
+          <Styled.ProfileInfo>
+            <Styled.ProfileName>{name}</Styled.ProfileName>
+            <Styled.ProfileEmail>@{email.split('@')[0]}</Styled.ProfileEmail>
+          </Styled.ProfileInfo>
+        </Styled.ProfileWrapper>
 
         <Button
           dataCy='sidebar-logout-button'
@@ -111,7 +99,7 @@ const Sidebar = () => {
         >
           Log out
         </Button>
-      </SidebarWrapper>
+      </Styled.SidebarWrapper>
 
       <Burger isOpen={isSidebarOpen} onClick={toggleSidebar} />
 

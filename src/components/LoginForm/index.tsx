@@ -9,13 +9,7 @@ import Button from '@/UI/Button';
 import Input from '@/UI/Input';
 import loginScheme from '@/zod/loginScheme';
 
-import {
-  ErrorMessage,
-  LoginFormContainer,
-  LoginInputsContainer,
-  LoginTitle,
-  SignupLink,
-} from './styled';
+import * as Styled from './styled';
 import { ILoginFormProps } from './types';
 
 const LoginForm = ({ onSubmit, isButtonActive }: ILoginFormProps) => {
@@ -30,9 +24,12 @@ const LoginForm = ({ onSubmit, isButtonActive }: ILoginFormProps) => {
   });
 
   return (
-    <LoginFormContainer onSubmit={handleSubmit(onSubmit)} data-cy='login-form'>
-      <LoginTitle>Log In to Twitter</LoginTitle>
-      <LoginInputsContainer>
+    <Styled.LoginFormContainer
+      onSubmit={handleSubmit(onSubmit)}
+      data-cy='login-form'
+    >
+      <Styled.LoginTitle>Log In to Twitter</Styled.LoginTitle>
+      <Styled.LoginInputsContainer>
         {loginInputs.map(({ placeholder, type, name }) => (
           <Fragment key={placeholder}>
             <Input
@@ -42,11 +39,11 @@ const LoginForm = ({ onSubmit, isButtonActive }: ILoginFormProps) => {
               data-cy={`login-form-${name}`}
             />
             {errors && errors[name] && (
-              <ErrorMessage>{errors[name]?.message}</ErrorMessage>
+              <Styled.ErrorMessage>{errors[name]?.message}</Styled.ErrorMessage>
             )}
           </Fragment>
         ))}
-      </LoginInputsContainer>
+      </Styled.LoginInputsContainer>
       <Button
         dataCy='login-submit-button'
         variant={ButtonVariants.primary}
@@ -55,10 +52,10 @@ const LoginForm = ({ onSubmit, isButtonActive }: ILoginFormProps) => {
       >
         Log In
       </Button>
-      <SignupLink data-cy='signup-twitter-link' to={ROUTES.SIGNUP}>
+      <Styled.SignupLink data-cy='signup-twitter-link' to={ROUTES.SIGNUP}>
         Sign Up to Twitter
-      </SignupLink>
-    </LoginFormContainer>
+      </Styled.SignupLink>
+    </Styled.LoginFormContainer>
   );
 };
 
