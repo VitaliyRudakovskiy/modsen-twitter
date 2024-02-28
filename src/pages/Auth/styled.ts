@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { flexCenter } from '@/theme/style/mixins';
+import { max1230 } from '@/theme/style/sizes';
 
 export const AuthContainer = styled.section`
   display: flex;
@@ -34,7 +35,7 @@ export const AuthContent = styled.div`
 export const TwitterImage = styled.img`
   width: 50%;
 
-  @media (max-width: ${({ theme }) => theme.sizes.px1230}) {
+  @media (max-width: ${max1230}) {
     width: ${({ theme }) => theme.sizes.px620};
   }
 

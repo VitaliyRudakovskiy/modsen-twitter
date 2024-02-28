@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { max850 } from '@/theme/style/sizes';
+
 export const TweetContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -18,7 +20,7 @@ export const MainContent = styled.div`
 `;
 
 export const Avatar = styled.img`
-  @media (max-width: ${({ theme }) => theme.sizes.px850}) {
+  @media (max-width: ${max850}) {
     position: absolute;
   }
 `;
@@ -29,7 +31,7 @@ export const TweetFile = styled.img`
   border-radius: ${({ theme }) => theme.gaps.s};
   object-fit: contain;
 
-  @media (max-width: ${({ theme }) => theme.sizes.px850}) {
+  @media (max-width: ${max850}) {
     max-height: ${({ theme }) => theme.sizes.full};
   }
 `;
@@ -47,7 +49,7 @@ export const Wrapper = styled.div`
     margin-bottom: 0;
   }
 
-  @media (max-width: ${({ theme }) => theme.sizes.px850}) {
+  @media (max-width: ${max850}) {
     max-width: ${({ theme }) => theme.sizes.full};
 
     &:nth-child(1) {
@@ -63,7 +65,7 @@ export const MobileWrapper = styled.div`
   justify-content: flex-start;
   gap: ${({ theme }) => theme.gaps.xs};
 
-  @media (max-width: ${({ theme }) => theme.sizes.px850}) {
+  @media (max-width: ${max850}) {
     flex-direction: column;
     align-items: flex-start;
     gap: ${({ theme }) => theme.gaps.xs2};

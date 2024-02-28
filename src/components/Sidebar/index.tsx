@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import AvatarInfo from '@/assets/avatar.png';
+import AvatarInfo from '@/assets/images/avatar.png';
 import ButtonVariants from '@/constants/buttonVariants';
 import ICONS from '@/constants/icons';
 import SidebarLinks from '@/constants/sidebarLinks';
@@ -19,6 +19,7 @@ import * as Styled from './styled';
 
 const Sidebar = () => {
   const { name, email } = useSelector(selectUser);
+  const userName = `@${email.split('@')[0]}`;
   const theme = useSelector(selectTheme);
   const [isTweetModalOpen, setIsTweetModalOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -45,10 +46,7 @@ const Sidebar = () => {
   const showModal = () => setIsTweetModalOpen(true);
 
   const closeSidebar = () => setIsSidebarOpen(false);
-
-  const toggleSidebar = () => {
-    setIsSidebarOpen((prevState) => !prevState);
-  };
+  const toggleSidebar = () => setIsSidebarOpen((prevState) => !prevState);
 
   return (
     <>
@@ -69,7 +67,7 @@ const Sidebar = () => {
             >
               <Styled.SidebarLinkImage
                 src={theme === 'dark' ? iconDark : icon}
-                alt='sidebar link icon'
+                alt='sidebar pic'
               />
               {title}
             </Styled.SidebarLink>
@@ -88,7 +86,7 @@ const Sidebar = () => {
           <Styled.Avatar src={AvatarInfo} alt='Avatar' />
           <Styled.ProfileInfo>
             <Styled.ProfileName>{name}</Styled.ProfileName>
-            <Styled.ProfileEmail>@{email.split('@')[0]}</Styled.ProfileEmail>
+            <Styled.ProfileEmail>{userName}</Styled.ProfileEmail>
           </Styled.ProfileInfo>
         </Styled.ProfileWrapper>
 

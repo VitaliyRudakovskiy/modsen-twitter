@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import TwitterBg from '@/assets/back-twitter.webp';
+import TwitterBg from '@/assets/images/back-twitter.webp';
 import ButtonVariants from '@/constants/buttonVariants';
 import FooterLinks from '@/constants/footerLinks';
 import ICONS from '@/constants/icons';

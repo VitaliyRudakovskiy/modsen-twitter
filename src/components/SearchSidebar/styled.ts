@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import { max1230 } from '@/theme/style/sizes';
 import { IIsOpen } from '@/types/form';
 
 export const SearchSidebarContainer = styled.section<IIsOpen>`
@@ -11,7 +12,7 @@ export const SearchSidebarContainer = styled.section<IIsOpen>`
   max-width: 400px;
   padding: 0 ${({ theme }) => theme.gaps.s};
 
-  @media (max-width: ${({ theme }) => theme.sizes.px1230}) {
+  @media (max-width: ${max1230}) {
     max-width: 500px;
     background-color: ${({ theme }) => theme.backgroundColor};
     position: fixed;

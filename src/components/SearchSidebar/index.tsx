@@ -1,14 +1,12 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { collection, getDocs, query, where } from 'firebase/firestore';
 
-import Memes from '@/assets/memes.webp';
+import Memes from '@/assets/images/memes.webp';
 import RecommendedUser from '@/components/RecommendedUser';
-import { firestore } from '@/db';
 import { selectSearch, setSearchText } from '@/store/slices/searchSlice';
-import { ITweetData } from '@/types/tweet';
 import { ISearchedUser } from '@/types/user';
 import Search from '@/UI/Search';
+import fetchUsers from '@/utils/fetchUsers';
 
 import SearchbarMobile from '../SearchMobile';
 
@@ -16,46 +14,15 @@ import * as Styled from './styled';
 
 const SearchSidebar = () => {
   const inputValue = useSelector(selectSearch);
-  const [items, setItems] = useState<ITweetData[] | ISearchedUser[]>([]);
+  const [items, setItems] = useState<ISearchedUser[]>([]);
   const [visibleItems, setVisibleItems] = useState(3);
-  const [showMore, setShowMore] = useState<boolean>(true);
+  const [showMore, setShowMore] = useState(true);
   const [isSearchbarOpen, setIsSearchbarOpen] = useState(false);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchData = async () => {
-      if (!inputValue) {
-        const dataQuery = query(collection(firestore, 'users'));
-
-        try {
-          const snapshot = await getDocs(dataQuery);
-          const newItems = snapshot.docs.map(
-            (doc) => doc.data() as ISearchedUser
-          );
-          setItems(newItems);
-        } catch (error) {
-          throw new Error(`Error occured while fetching data: ${error}`);
-        }
-      } else {
-        const dataQuery = query(
-          collection(firestore, 'users'),
-          where('email', '>=', inputValue),
-          where('email', '<=', `${inputValue}\uf8ff`)
-        );
-
-        try {
-          const snapshot = await getDocs(dataQuery);
-          const newItems = snapshot.docs.map(
-            (doc) => doc.data() as ISearchedUser
-          );
-          setItems(newItems);
-        } catch (error) {
-          throw new Error(`Error occured while fetching data: ${error}`);
-        }
-      }
-    };
-    fetchData();
+    fetchUsers(inputValue, setItems);
   }, [inputValue]);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -78,10 +45,7 @@ const SearchSidebar = () => {
   };
 
   const closeSearchbar = () => setIsSearchbarOpen(false);
-
-  const toggleSearchbar = () => {
-    setIsSearchbarOpen((prevState) => !prevState);
-  };
+  const toggleSearchbar = () => setIsSearchbarOpen((prevState) => !prevState);
 
   return (
     <>

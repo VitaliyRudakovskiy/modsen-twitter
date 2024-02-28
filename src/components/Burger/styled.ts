@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 
 import { flexBetween } from '@/theme/style/mixins';
+import { max850 } from '@/theme/style/sizes';
 import { IIsOpen } from '@/types/form';
 
 export const BurgerIconWrapper = styled.div<IIsOpen>`
   display: none;
 
-  @media (max-width: ${({ theme }) => theme.sizes.px850}) {
+  @media (max-width: ${max850}) {
     position: fixed;
     left: ${({ theme }) => theme.gaps.xl};
     top: ${({ theme }) => theme.gaps.l};

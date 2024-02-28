@@ -1,8 +1,8 @@
 import { ChangeEvent, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import userPhoto from '@/assets/avatar.png';
-import uploadImage from '@/assets/upload.png';
+import userPhoto from '@/assets/images/avatar.png';
+import uploadImage from '@/assets/images/upload.png';
 import ButtonVariants from '@/constants/buttonVariants';
 import { selectUser } from '@/store/slices/userSlice';
 import { IFile } from '@/types/tweet';

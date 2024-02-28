@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { useSelector } from 'react-redux';
 
-import ICONS from '@/constants/icons';
+import defineSearchIcon from '@/helpers/defineSearchIcon';
 import { selectTheme } from '@/store/slices/themeSlice';
 
 import { SearchContainer, SearchIcon, SearchInput } from './styled';
@@ -19,11 +19,13 @@ const Search = ({
     inputRef.current?.focus();
   };
 
-  const Icon = theme === 'dark' ? ICONS.searchDark : ICONS.search;
-
   return (
     <SearchContainer>
-      <SearchIcon src={Icon} alt='Search Icon' onClick={focusTextInput} />
+      <SearchIcon
+        src={defineSearchIcon(theme)}
+        alt='Search Icon'
+        onClick={focusTextInput}
+      />
       <SearchInput
         ref={inputRef}
         placeholder={placeholder}

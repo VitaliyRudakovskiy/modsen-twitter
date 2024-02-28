@@ -1,7 +1,5 @@
 import { DefaultTheme } from 'styled-components';
 
-import ICONS from '@/constants/icons';
-
 import COLORS from './style/colors';
 import FONTS from './style/fonts';
 import GAPS from './style/gaps';
@@ -40,8 +38,6 @@ export const lightTheme: DefaultTheme = {
   goBackLink: COLORS.white300,
   modalColor: COLORS.white300,
   loaderColor: COLORS.blue300,
-
-  deleteIcon: ICONS.delete,
 };
 
 export const darkTheme: DefaultTheme = {
@@ -62,6 +58,4 @@ export const darkTheme: DefaultTheme = {
   goBackLink: COLORS.blue200,
   modalColor: COLORS.black200,
   loaderColor: COLORS.blue100,
-
-  deleteIcon: ICONS.deleteIcon,
 };

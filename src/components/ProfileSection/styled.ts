@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { flexBetween, flexCenter } from '@/theme/style/mixins';
+import { max850, max1230 } from '@/theme/style/sizes';
 
 export const ProfileContainer = styled.div`
   flex: 1;
@@ -12,11 +13,11 @@ export const ProfileHeader = styled.div`
   ${flexBetween};
   padding: ${({ theme }) => theme.gaps.s};
 
-  @media (max-width: ${({ theme }) => theme.sizes.px1230}) {
+  @media (max-width: ${max1230}) {
     padding-right: ${({ theme }) => theme.gaps.xl6};
   }
 
-  @media (max-width: ${({ theme }) => theme.sizes.px850}) {
+  @media (max-width: ${max850}) {
     padding-left: ${({ theme }) => theme.gaps.xl6};
   }
 `;

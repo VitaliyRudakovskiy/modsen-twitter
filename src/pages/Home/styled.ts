@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { max850 } from '@/theme/style/sizes';
+
 export const HomeWrapper = styled.section`
   display: flex;
   justify-content: center;
@@ -10,7 +12,7 @@ export const HomeWrapper = styled.section`
   background: ${({ theme }) => theme.backgroundColor};
   color: ${({ theme }) => theme.textColor};
 
-  @media (max-width: ${({ theme }) => theme.sizes.px850}) {
+  @media (max-width: ${max850}) {
     padding: ${({ theme }) => theme.gaps.m} ${({ theme }) => theme.gaps.xs};
   }
 `;

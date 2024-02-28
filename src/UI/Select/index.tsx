@@ -7,7 +7,7 @@ import {
 } from 'react';
 import { useSelector } from 'react-redux';
 
-import ICONS from '@/constants/icons';
+import defineArrowIcon from '@/helpers/defineArrowIcon';
 import { selectTheme } from '@/store/slices/themeSlice';
 
 import {
@@ -43,8 +43,6 @@ const Select = forwardRef<HTMLSelectElement, ISelectProps>(
       setIsOpened((prevOpened) => !prevOpened);
     };
 
-    const Icon = theme === 'light' ? ICONS.arrowDown : ICONS.arrowDownDark;
-
     return (
       <StyledSelectContainer $width={width}>
         <StyledSelect
@@ -63,7 +61,11 @@ const Select = forwardRef<HTMLSelectElement, ISelectProps>(
             </StyledOption>
           ))}
         </StyledSelect>
-        <ArrowImage src={Icon} alt='dropdown arrow' $isOpened={isOpened} />
+        <ArrowImage
+          src={defineArrowIcon(theme)}
+          alt='dropdown arrow'
+          $isOpened={isOpened}
+        />
       </StyledSelectContainer>
     );
   }

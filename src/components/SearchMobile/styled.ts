@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
+import { max850, max1230 } from '@/theme/style/sizes';
+
 export const SearchIconWrapper = styled.div`
   display: none;
 
-  @media (max-width: ${({ theme }) => theme.sizes.px1230}) {
+  @media (max-width: ${max1230}) {
     display: flex;
     position: fixed;
     right: ${({ theme }) => theme.gaps.l};
@@ -15,7 +17,7 @@ export const SearchIconWrapper = styled.div`
     transition: all 0.3s;
   }
 
-  @media (max-width: ${({ theme }) => theme.sizes.px850}) {
+  @media (max-width: ${max850}) {
     top: ${({ theme }) => theme.gaps.m};
   }
 

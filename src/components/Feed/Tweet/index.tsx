@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from 'react';
+import { memo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
   arrayRemove,
@@ -8,14 +8,14 @@ import {
   doc,
   updateDoc,
 } from 'firebase/firestore';
-import { getDownloadURL, ref } from 'firebase/storage';
 
-import avatar from '@/assets/avatar.png';
+import avatar from '@/assets/images/avatar.png';
 import ICONS from '@/constants/icons';
-import { firestore, storage } from '@/db';
+import { firestore } from '@/db';
 import convertTimestamp from '@/helpers/convertTimestamp';
 import defineLikeIcon from '@/helpers/defineLikeIcon';
 import isLikedByUser from '@/helpers/isLikedByUser';
+import useFileUrl from '@/hooks/useFileUrl';
 import { selectTheme } from '@/store/slices/themeSlice';
 import { selectUser } from '@/store/slices/userSlice';
 import { ITweetProps } from '@/types/tweet';
@@ -26,20 +26,9 @@ const Tweet = memo(({ tweetData, id }: ITweetProps) => {
   const { text, email, name, file, likedBy, createdAt } = tweetData;
   const { id: userId, email: userEmail } = useSelector(selectUser);
   const theme = useSelector(selectTheme);
+  const fileURL = useFileUrl(file);
 
   const [isLiked, setIsLiked] = useState(() => isLikedByUser(likedBy, userId));
-  const [fileURL, setFileURL] = useState<string>('');
-
-  useEffect(() => {
-    const getFileUrl = async () => {
-      if (file) {
-        const url = await getDownloadURL(ref(storage, file));
-        setFileURL(url);
-      }
-    };
-
-    getFileUrl();
-  }, [file]);
 
   const handleDeleteTweet = async () => {
     const tweetsCollection = collection(firestore, 'tweets');
@@ -73,8 +62,6 @@ const Tweet = memo(({ tweetData, id }: ITweetProps) => {
     }
   };
 
-  const LikeIcon = defineLikeIcon(isLiked, theme);
-
   return (
     <Styled.TweetContainer>
       <Styled.Avatar src={avatar} alt='user photo' />
@@ -92,7 +79,10 @@ const Tweet = memo(({ tweetData, id }: ITweetProps) => {
         </Styled.Wrapper>
         <Styled.Wrapper>
           <Styled.LikesContainer onClick={handleLikeTweet}>
-            <Styled.LikeImage src={LikeIcon} alt='like heart' />
+            <Styled.LikeImage
+              src={defineLikeIcon(isLiked, theme)}
+              alt='like heart'
+            />
             <p>{likedBy.length}</p>
           </Styled.LikesContainer>
         </Styled.Wrapper>

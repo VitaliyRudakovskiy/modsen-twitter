@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { flexBetween, flexCenter, flexColumnStart } from '@/theme/style/mixins';
+import { max850, max1230 } from '@/theme/style/sizes';
 
 export const FeedContainer = styled.section`
   ${flexColumnStart};
@@ -12,11 +13,11 @@ export const Header = styled.div`
   width: ${({ theme }) => theme.sizes.full};
   padding: ${({ theme }) => theme.gaps.m};
 
-  @media (max-width: ${({ theme }) => theme.sizes.px1230}) {
+  @media (max-width: ${max1230}) {
     padding-right: ${({ theme }) => theme.gaps.xl6};
   }
 
-  @media (max-width: ${({ theme }) => theme.sizes.px850}) {
+  @media (max-width: ${max850}) {
     padding: 0 ${({ theme }) => theme.gaps.xl7};
   }
 `;

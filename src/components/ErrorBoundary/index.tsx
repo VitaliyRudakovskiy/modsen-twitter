@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-import errorImage from '@/assets/error-image.webp';
+import errorImage from '@/assets/images/error-image.webp';
 
 import * as Styled from './styled';
 import { ErrorBoundaryProps, ErrorBoundaryState } from './types';

@@ -1,6 +1,6 @@
-import { ILoginForm } from '@/types/form';
+import { Dispatch, SetStateAction } from 'react';
 
 export type ILoginFormProps = {
-  onSubmit: (form: ILoginForm) => void;
   isButtonActive: boolean;
+  setIsButtonActive: Dispatch<SetStateAction<boolean>>;
 };

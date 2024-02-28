@@ -1,4 +1,4 @@
-import Avatar from '@/assets/avatar.png';
+import Avatar from '@/assets/images/avatar.png';
 import ButtonVariants from '@/constants/buttonVariants';
 import Button from '@/UI/Button';
 

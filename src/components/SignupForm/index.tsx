@@ -1,4 +1,6 @@
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import ButtonVariants from '@/constants/buttonVariants';
@@ -7,26 +9,66 @@ import {
   signupInputs,
   signupSelects,
 } from '@/constants/signupElements';
+import formatBirthDate from '@/helpers/formatBirthDate';
 import ROUTES from '@/routes';
+import { setCurrentUser } from '@/store/slices/userSlice';
 import { ISignupForm } from '@/types/form';
 import Button from '@/UI/Button';
 import Input from '@/UI/Input';
 import Select from '@/UI/Select';
+import setUserToFirestore from '@/utils/setUserToFirestore';
 import { signupScheme } from '@/zod/signupScheme';
 
 import * as Styled from './styled';
 import { ISignupFormProps } from './types';
 
-const SignupForm = ({ onSubmit, isButtonActive }: ISignupFormProps) => {
+const SignupForm = ({
+  isButtonActive,
+  setIsButtonActive,
+}: ISignupFormProps) => {
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
+    reset,
   } = useForm<ISignupForm>({
     resolver: zodResolver(signupScheme),
     defaultValues: signupDefaultValues,
     mode: 'onChange',
   });
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const onSubmit: SubmitHandler<ISignupForm> = async ({
+    name,
+    phone,
+    email,
+    password,
+    month,
+    day,
+    year,
+  }: ISignupForm) => {
+    const formattedBirthDate = formatBirthDate(+day, month, +year);
+
+    try {
+      setIsButtonActive(false);
+      const { userData } = await setUserToFirestore(
+        name,
+        phone,
+        email,
+        password,
+        formattedBirthDate
+      );
+      dispatch(setCurrentUser({ ...userData }));
+      navigate(ROUTES.HOME);
+    } catch (error) {
+      throw new Error(`An error occured while submitting form: ${error}`);
+    } finally {
+      reset();
+      setIsButtonActive(true);
+    }
+  };
 
   return (
     <Styled.SignupFormContainer

@@ -1,3 +1,5 @@
+import { DefaultTheme } from 'styled-components';
+
 import { IString } from '@/constants/types';
 
 const SIZES: IString = {
@@ -24,5 +26,8 @@ const SIZES: IString = {
   per95: '95%',
   full: '100%',
 };
+
+export const max850 = ({ theme }: DefaultTheme) => theme.sizes.px850;
+export const max1230 = ({ theme }: DefaultTheme) => theme.sizes.px1230;
 
 export default SIZES;

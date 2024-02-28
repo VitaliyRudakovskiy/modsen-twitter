@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { max850 } from '@/theme/style/sizes';
 import { IIsOpen } from '@/types/form';
 
 export const SidebarWrapper = styled.aside<IIsOpen>`
@@ -9,7 +10,7 @@ export const SidebarWrapper = styled.aside<IIsOpen>`
   align-items: start;
   max-width: ${({ theme }) => theme.sizes.px230};
 
-  @media (max-width: ${({ theme }) => theme.sizes.px850}) {
+  @media (max-width: ${max850}) {
     width: ${({ theme }) => theme.sizes.full};
     background-color: ${({ theme }) => theme.backgroundColor};
     position: fixed;
@@ -40,7 +41,7 @@ export const SidebarLinksContainer = styled.div`
   gap: ${({ theme }) => theme.gaps.s};
   margin-bottom: ${({ theme }) => theme.gaps.xl2};
 
-  @media (max-width: ${({ theme }) => theme.sizes.px850}) {
+  @media (max-width: ${max850}) {
     margin-bottom: ${({ theme }) => theme.gaps.m};
     gap: ${({ theme }) => theme.gaps.xs};
   }
@@ -60,20 +61,17 @@ export const SidebarLink = styled(NavLink)`
   }
 `;
 
-export const SidebarLinkImage = styled.img`
-  width: ${({ theme }) => theme.gaps.xl2};
-
-  background-color: transparent;
-  color: red;
-`;
-
 export const TwitterIcon = styled.img`
   width: ${({ theme }) => theme.gaps.xl4};
   margin-bottom: ${({ theme }) => theme.gaps.xl2};
 
-  @media (max-width: ${({ theme }) => theme.sizes.px850}) {
+  @media (max-width: ${max850}) {
     display: none;
   }
+`;
+
+export const SidebarLinkImage = styled.img`
+  width: ${({ theme }) => theme.gaps.xl2};
 `;
 
 export const ProfileWrapper = styled.div`
@@ -83,7 +81,7 @@ export const ProfileWrapper = styled.div`
   gap: ${({ theme }) => theme.gaps.xs};
   margin: ${({ theme }) => theme.gaps.xl} 0;
 
-  @media (max-width: ${({ theme }) => theme.sizes.px850}) {
+  @media (max-width: ${max850}) {
     margin: ${({ theme }) => theme.gaps.m} 0;
   }
 `;
@@ -96,7 +94,7 @@ export const ProfileInfo = styled.div`
 `;
 
 export const Avatar = styled.img`
-  @media (max-width: ${({ theme }) => theme.sizes.px850}) {
+  @media (max-width: ${max850}) {
     display: none;
   }
 `;
